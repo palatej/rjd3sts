@@ -2,7 +2,7 @@
 #' @checkmate
 
 proc_numeric<-function(rslt, name){
-  s<-.jcall(rslt, "Ljava/lang/Object;", "getData", name, jd_clobj)
+  s<-.jcall(rslt, "Ljava/lang/Object;", "getData", name)
   if (!is.jnull(s))
     .jcall(s, "D", "doubleValue")
   else
@@ -10,28 +10,28 @@ proc_numeric<-function(rslt, name){
 }
 
 proc_vector<-function(rslt, name){
-  s<-.jcall(rslt, "Ljava/lang/Object;", "getData", name, jd_clobj)
+  s<-.jcall(rslt, "Ljava/lang/Object;", "getData", name)
   if (is.jnull(s))
     return(NULL)
   .jevalArray(s)
 }
 
 proc_int<-function(rslt, name){
-  s<-.jcall(rslt, "Ljava/lang/Object;", "getData", name, jd_clobj)
+  s<-.jcall(rslt, "Ljava/lang/Object;", "getData", name)
   if (is.jnull(s))
     return(-1)
   .jcall(s, "I", "intValue")
 }
 
 proc_bool<-function(rslt, name){
-  s<-.jcall(rslt, "Ljava/lang/Object;", "getData", name, jd_clobj)
+  s<-.jcall(rslt, "Ljava/lang/Object;", "getData", name)
   if (is.jnull(s))
     return(FALSE)
   .jcall(s, "Z", "booleanValue")
 }
 
 proc_ts<-function(rslt, name){
-  s<-.jcall(rslt, "Ljava/lang/Object;", "getData", name, jd_clobj)
+  s<-.jcall(rslt, "Ljava/lang/Object;", "getData", name)
   if (is.jnull(s))
     return (NULL)
   if (.jinstanceof(s, "demetra/timeseries/TsData"))
@@ -41,21 +41,21 @@ proc_ts<-function(rslt, name){
 }
 
 proc_str<-function(rslt, name){
-  s<-.jcall(rslt, "Ljava/lang/Object;", "getData", name, jd_clobj)
+  s<-.jcall(rslt, "Ljava/lang/Object;", "getData", name)
   if (is.jnull(s))
     return(NULL)
   .jcall(s, "S", "toString")
 }
 
 proc_desc<-function(rslt, name){
-  s<-.jcall(rslt, "Ljava/lang/Object;", "getData", name, jd_clobj)
+  s<-.jcall(rslt, "Ljava/lang/Object;", "getData", name)
   if (is.jnull(s))
     return(NULL)
   .jevalArray(s)
 }
 
 proc_test<-function(rslt, name){
-  s<-.jcall(rslt, "Ljava/lang/Object;", "getData", name, jd_clobj)
+  s<-.jcall(rslt, "Ljava/lang/Object;", "getData", name)
   if (is.jnull(s))
     return(NULL)
   desc<-.jcall(s, "S", "getDescription")
@@ -67,7 +67,7 @@ proc_test<-function(rslt, name){
 }
 
 proc_parameter<-function(rslt, name){
-  s<-.jcall(rslt, "Ljava/lang/Object;", "getData", name, jd_clobj)
+  s<-.jcall(rslt, "Ljava/lang/Object;", "getData", name)
   if (is.jnull(s))
     return(NULL)
   val<-.jcall(s, "D", "getValue")
@@ -75,7 +75,7 @@ proc_parameter<-function(rslt, name){
 }
 
 proc_parameters<-function(rslt, name){
-  jd_p<-.jcall(rslt, "Ljava/lang/Object;", "getData", name, jd_clobj)
+  jd_p<-.jcall(rslt, "Ljava/lang/Object;", "getData", name)
   if (is.jnull(jd_p))
     return(NULL)
   p<-.jcastToArray(jd_p)
@@ -88,14 +88,14 @@ proc_parameters<-function(rslt, name){
 }
 
 proc_matrix<-function(rslt, name){
-  s<-.jcall(rslt, "Ljava/lang/Object;", "getData", name, jd_clobj)
+  s<-.jcall(rslt, "Ljava/lang/Object;", "getData", name)
   if (is.jnull(s))
     return(NULL)
   return (matrix_jd2r(s))
 }
 
 proc_data<-function(rslt, name){
-  s<-.jcall(rslt, "Ljava/lang/Object;", "getData", name, jd_clobj)
+  s<-.jcall(rslt, "Ljava/lang/Object;", "getData", name)
   if (is.jnull(s))
     return (NULL)
   if (.jinstanceof(s, "demetra/timeseries/TsData"))
@@ -154,3 +154,15 @@ proc_likelihood<-function(jrslt, prefix){
   )
 }
 
+proc_reg<-function(rslt, name){
+  s<-proc_obj(rslt, name)
+  if (is.jnull(s))
+    return(NULL)
+  desc<-.jcall(s, "S", "getDescription")
+  val<-.jcall(s, "D", "getValue")
+  e<-.jcall(s, "D", "getStdError")
+  p<-.jcall(s, "D", "getPValue")
+  all<-c(val, e, p)
+  attr(all, "name")<-desc
+  return (all)
+}

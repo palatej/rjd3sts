@@ -2,7 +2,7 @@
 % Please edit documentation in R/jd3_sts.R
 \name{sts}
 \alias{sts}
-\title{Structural time series}
+\title{Title}
 \usage{
 sts(
   y,
@@ -12,11 +12,14 @@ sts(
   cycle = -1,
   noise = 1,
   seasonal = c("Trigonometric", "Dummy", "Crude", "HarrisonStevens", "Fixed", "Unused"),
-  tol = 1e-12
+  diffuse.regs = T,
+  tol = 1e-09
 )
 }
 \arguments{
 \item{y}{}
+
+\item{X}{}
 
 \item{level}{}
 
@@ -27,10 +30,14 @@ sts(
 \item{noise}{}
 
 \item{seasonal}{}
+
+\item{diffuse.regs}{}
+
+\item{tol}{}
 }
 \value{
 
 }
 \description{
-Structural time series
+Title
 }

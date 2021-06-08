@@ -1,11 +1,11 @@
-#' @include jd3_ts.R jd3_rslts.R protobuf.R
-#' @checkmate
+#' @include protobuf.R
 NULL
 
 #' Title
 #'
 #' @param y 
 #' @param X 
+#' @param X.td 
 #' @param level 
 #' @param slope 
 #' @param cycle 
@@ -18,16 +18,19 @@ NULL
 #' @export
 #'
 #' @examples
-std<-rjd3modelling::td(12, c(1992,1), 228, c(1,1,1,1,2,3,0))
-ts<-function(y, X=NULL, level=1, slope=1, cycle=-1, noise=1
+sts<-function(y, X=NULL, X.td=NULL, level=1, slope=1, cycle=-1, noise=1
               , seasonal=c("Trigonometric", "Dummy", "Crude", "HarrisonStevens", "Fixed", "Unused"), diffuse.regs=T, tol=1e-9){
   
   if (!is.ts(y)){
     stop("y must be a time series")
   }
   seasonal<-match.arg(seasonal)
-  jts<-ts_r2jd(y)
-  jx<-matrix_r2jd(X)
+  if (! is.null(X.td)){
+    td<-rjd3modelling::td.forTs(y, X.td)
+    X<-cbind(X, td)
+  }
+  jts<-.JD3_ENV$ts_r2jd(y)
+  jx<-.JD3_ENV$matrix_r2jd(X)
   jsts<-.jcall("demetra/sts/r/Bsm", "Ldemetra/sts/BasicStructuralModel;", "process", jts, jx,
               as.integer(level), as.integer(slope), as.integer(cycle), as.integer(noise), seasonal, as.logical(diffuse.regs), tol)
   buffer<-.jcall("demetra/sts/r/Bsm", "[B", "toBuffer", jsts)
@@ -57,8 +60,8 @@ sts.forecast<-function(y, model=c("none", "td2", "td3", "td7", "full"), nf=12){
   if (!is.ts(y)){
     stop("y must be a time series")
   }
-  jf<-.jcall("demetra/sts/r/Bsm", "Ldemetra/math/matrices/MatrixType;", "forecast", ts_r2jd(y), model, as.integer((nf)))
-  return (matrix_jd2r(jf))
+  jf<-.jcall("demetra/sts/r/Bsm", "Ldemetra/math/matrices/MatrixType;", "forecast", .JD3_ENV$ts_r2jd(y), model, as.integer((nf)))
+  return (.JD3_ENV$matrix_jd2r(jf))
   
 }
 
@@ -75,10 +78,10 @@ p2r_sts_rslts<-function(p){
 p2r_sts_estimation<-function(p){
   return (list(
     y=p$y,
-    X=p2r_matrix(p$x),
-    parameters=p2r_parameters_estimation(p$parameters),
+    X=.JD3_ENV$p2r_matrix(p$x),
+    parameters=.JD3_ENV$p2r_parameters_estimation(p$parameters),
     b=p$b,
-    bvar=p2r_matrix(p$bcovariance),
+    bvar=.JD3_ENV$p2r_matrix(p$bcovariance),
     likelihood=p2r_diffuselikelihood(p$likelihood),
     res=p$residuals))
 }
@@ -86,9 +89,9 @@ p2r_sts_estimation<-function(p){
 p2r_sts_description<-function(p){
   return (list(
     log=p$log,
-    preadjustment = enum_extract(modelling.LengthOfPeriod, p$preadjustment),
+    preadjustment = .JD3_ENV$enum_extract(modelling.LengthOfPeriod, p$preadjustment),
     bsm=p2r_spec_bsm(p$bsm),
-    variables=p2r_variables(p$variables)))
+    variables=.JD3_ENV$p2r_variables(p$variables)))
 }
 
 p2r_sts_components<-function(p){
@@ -110,14 +113,14 @@ p2r_sts_component<-function(p){
 
 p2r_spec_bsm<-function(p){
   return (list(
-    level=p2r_parameter(p$level),
-    slope=p2r_parameter(p$slope),
-    seas=p2r_parameter(p$seas),
-    seasmodel=enum_extract(sts.SeasonalModel, p$seasonal_model),
-    noise=p2r_parameter(p$noise),
-    cycle=p2r_parameter(p$cycle),
-    cyclelength=p2r_parameter(p$cycle_period),
-    cyclefactor=p2r_parameter(p$cycle_factor)
+    level=.JD3_ENV$p2r_parameter(p$level),
+    slope=.JD3_ENV$p2r_parameter(p$slope),
+    seas=.JD3_ENV$p2r_parameter(p$seas),
+    seasmodel=.JD3_ENV$enum_extract(sts.SeasonalModel, p$seasonal_model),
+    noise=.JD3_ENV$p2r_parameter(p$noise),
+    cycle=.JD3_ENV$p2r_parameter(p$cycle),
+    cyclelength=.JD3_ENV$p2r_parameter(p$cycle_period),
+    cyclefactor=.JD3_ENV$p2r_parameter(p$cycle_factor)
   ))
   
 }
@@ -151,17 +154,20 @@ print.JD3STS<-function(m){
   s<-m$estimation$likelihood$aic
   cat("AIC: ", format(round(s, 5), scientific = FALSE), "\n\n")
   
-  cat("Regression:\n")
-  regs<-do.call("rbind", lapply(m$description$variables, function(z){z$coeff}))
-  xregs<-cbind(regs, stde=NA, t=NA, pvalue=NA)
-  stde<-sqrt(diag(m$estimation$bvar))
-  sel<-xregs$type=='ESTIMATED'
-  t<-xregs$value[sel]/stde
-  ndf<-m$estimation$likelihood$nobs-m$estimation$likelihood$ndiffuse-m$estimation$likelihood$nparams+1
-  pval<-2*pt(abs(t), ndf, lower.tail = F)
-  xregs$stde[sel]<-stde
-  xregs$t[sel]<-t
-  xregs$pvalue[sel]<-pval
-  print(xregs[-2])
-  
+  if (length(m$description$variables) > 0){
+    cat("Regression:\n")
+    regs<-do.call("rbind", lapply(m$description$variables, function(z){z$coeff}))
+    xregs<-cbind(regs, stde=NA, t=NA, pvalue=NA)
+    stde<-sqrt(diag(m$estimation$bvar))
+    sel<-xregs$type=='ESTIMATED'
+    t<-xregs$value[sel]/stde
+    ndf<-m$estimation$likelihood$nobs-m$estimation$likelihood$ndiffuse-m$estimation$likelihood$nparams+1
+    pval<-2*pt(abs(t), ndf, lower.tail = F)
+    xregs$stde[sel]<-stde
+    xregs$t[sel]<-t
+    xregs$pvalue[sel]<-pval
+    print(xregs[-2])
+  }else{
+    cat("No regression variable\n")
+  }
 }

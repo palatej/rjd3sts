@@ -21,11 +21,9 @@ RoxygenNote: 7.1.1
 BugReports: https://github.com/jdemetra/rjdemetra3/issues
 Encoding: UTF-8
 Collate: 
-    'jd3_ts.R'
-    'zzz.R'
-    'jd3_rslts.R'
-    'procresults.R'
+    'jd3_seasonalbreaks.R'
     'jd3_ssf.R'
     'protobuf.R'
     'jd3_sts.R'
-    'jd3_utility.R'
+    'jd3_stsoutliers.R'
+    'zzz.R'

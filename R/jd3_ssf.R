@@ -1,6 +1,3 @@
-#' @include jd3_ts.R procresults.R 
-#' @import rJava
-NULL
 
 #' Title
 #'
@@ -166,9 +163,9 @@ setMethod("signal", signature = c(object="JD3_SsfModelEstimation"), function(obj
   }else{
     if (! is.null(loading)){
       if (stdev){
-        return (.jcall(object@internal, "[D", "stdevSignal", matrix_r2jd(loading)))
+        return (.jcall(object@internal, "[D", "stdevSignal", .JD3_ENV$matrix_r2jd(loading)))
       }else{
-        return (.jcall(object@internal, "[D", "signal", matrix_r2jd(loading)))
+        return (.jcall(object@internal, "[D", "signal", .JD3_ENV$matrix_r2jd(loading)))
       }
     }else{
       if (is.null(pos))
@@ -197,7 +194,7 @@ setMethod("loading", signature = c(object="JD3_SsfModelEstimation"), function(ob
     return
   }else{
       jm<-.jcall(object@internal, "Ldemetra/math/matrices/MatrixType;", "loading", as.integer(obs-1))
-      return (matrix_jd2r(jm))
+      return (.JD3_ENV$matrix_jd2r(jm))
   }
 })
 
@@ -395,7 +392,7 @@ sae<-function(name, ar, fixedar=FALSE, lag=1, zeroinit=FALSE){
 #' @examples
 msae<-function(name, nwaves, ar, fixedar=TRUE, lag=1){
 
-  jrslt<-.jcall("jdplus/msts/AtomicModels", "Ljdplus/msts/StateItem;", "waveSpecificSurveyError", name, as.integer(nwaves), matrix_r2jd(ar), fixedar, as.integer(lag))
+  jrslt<-.jcall("jdplus/msts/AtomicModels", "Ljdplus/msts/StateItem;", "waveSpecificSurveyError", name, as.integer(nwaves), .JD3_ENV$matrix_r2jd(ar), fixedar, as.integer(lag))
   
   
   new (Class = "JD3_SsfStateBlock", internal = jrslt)
@@ -416,7 +413,7 @@ msae<-function(name, nwaves, ar, fixedar=TRUE, lag=1){
 #' @examples
 msae2<-function(name, vars, fixedvars=F, ar, fixedar=T, lag=1){
   
-  jrslt<-.jcall("jdplus/msts/AtomicModels", "Ljdplus/msts/StateItem;", "waveSpecificSurveyError", name, vars, fixedvars, matrix_r2jd(ar), fixedar, as.integer(lag))
+  jrslt<-.jcall("jdplus/msts/AtomicModels", "Ljdplus/msts/StateItem;", "waveSpecificSurveyError", name, vars, fixedvars, .JD3_ENV$matrix_r2jd(ar), fixedar, as.integer(lag))
   
   
   new (Class = "JD3_SsfStateBlock", internal = jrslt)
@@ -438,7 +435,7 @@ msae2<-function(name, vars, fixedvars=F, ar, fixedar=T, lag=1){
 #' @examples
 msae3<-function(name, vars, fixedvars=F, ar, fixedar=T, k, lag=1){
   
-  jrslt<-.jcall("jdplus/msts/AtomicModels", "Ljdplus/msts/StateItem;", "waveSpecificSurveyError", name, vars, fixedvars, .jarray(ar), fixedar, matrix_r2jd(k), as.integer(lag))
+  jrslt<-.jcall("jdplus/msts/AtomicModels", "Ljdplus/msts/StateItem;", "waveSpecificSurveyError", name, vars, fixedvars, .jarray(ar), fixedar, .JD3_ENV$matrix_r2jd(k), as.integer(lag))
   
   
   new (Class = "JD3_SsfStateBlock", internal = jrslt)
@@ -800,9 +797,9 @@ aggregation<-function(name, components){
 reg<-function(name, x, var=NULL, fixed=F){
   
   if (is.null(var)){
-    jrslt<-.jcall("jdplus/msts/AtomicModels", "Ljdplus/msts/StateItem;", "regression", name, matrix_r2jd(x))
+    jrslt<-.jcall("jdplus/msts/AtomicModels", "Ljdplus/msts/StateItem;", "regression", name, .JD3_ENV$matrix_r2jd(x))
   }else{
-    jrslt<-.jcall("jdplus/msts/AtomicModels", "Ljdplus/msts/StateItem;", "timeVaryingRegression", name, matrix_r2jd(x), as.numeric(var), fixed)
+    jrslt<-.jcall("jdplus/msts/AtomicModels", "Ljdplus/msts/StateItem;", "timeVaryingRegression", name, .JD3_ENV$matrix_r2jd(x), as.numeric(var), fixed)
   }
   return (new (Class = "JD3_SsfStateBlock", internal = jrslt))
 }
@@ -823,7 +820,7 @@ reg<-function(name, x, var=NULL, fixed=F){
 #'
 #' @examples
 td<-function(name, period, start, length, groups=c(1,2,3,4,5,6,0), contrast=TRUE, variance=1, fixed=FALSE){
-  jdomain<-tsdomain_r2jd(period, startYear = start[1], startPeriod = start[2], length = length)
+  jdomain<-.JD3_ENV$tsdomain_r2jd(period, startYear = start[1], startPeriod = start[2], length = length)
   jrslt<-.jcall("jdplus/msts/AtomicModels", "Ljdplus/msts/StateItem;", "tdRegression", name, jdomain, as.integer(groups), contrast, variance, fixed)
   new (Class = "JD3_SsfStateBlock", internal = jrslt)
 }
@@ -837,7 +834,7 @@ td<-function(name, period, start, length, groups=c(1,2,3,4,5,6,0), contrast=TRUE
 #'
 #' @examples
 smoothedstates<-function(rslt){
-  return(result(rslt, "ssf.smoothing.states"))
+  return(.JD3_ENV$result(rslt, "ssf.smoothing.states"))
 }
 
 #' Title
@@ -849,7 +846,7 @@ smoothedstates<-function(rslt){
 #'
 #' @examples
 smoothedstatesstdev<-function(rslt){
-  return(sqrt(result(rslt, "ssf.smoothing.vstates")))
+  return(sqrt(.JD3_ENV$result(rslt, "ssf.smoothing.vstates")))
 }
 
 #' Title
@@ -861,7 +858,7 @@ smoothedstatesstdev<-function(rslt){
 #'
 #' @examples
 filteredstates<-function(rslt){
-  return(result(rslt, "ssf.filtered.states"))
+  return(.JD3_ENV$result(rslt, "ssf.filtered.states"))
 }
 
 #' Title
@@ -873,7 +870,7 @@ filteredstates<-function(rslt){
 #'
 #' @examples
 filteredstatesstdev<-function(rslt){
-  return(sqrt(result(rslt, "ssf.filtered.vstates")))
+  return(sqrt(.JD3_ENV$result(rslt, "ssf.filtered.vstates")))
 }
 
 #' Title
@@ -885,7 +882,7 @@ filteredstatesstdev<-function(rslt){
 #'
 #' @examples
 filteringstatesstdev<-function(rslt){
-  return(sqrt(result(rslt, "ssf.filtering.vstates")))
+  return(sqrt(.JD3_ENV$result(rslt, "ssf.filtering.vstates")))
 }
 
 #' Title
@@ -897,6 +894,6 @@ filteringstatesstdev<-function(rslt){
 #'
 #' @examples
 filteringstates<-function(rslt){
-  return(result(rslt, "ssf.filtering.states"))
+  return(.JD3_ENV$result(rslt, "ssf.filtering.states"))
 }
 

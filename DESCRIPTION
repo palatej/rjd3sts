@@ -27,3 +27,4 @@ Collate:
     'jd3_sts.R'
     'jd3_stsoutliers.R'
     'zzz.R'
+VignetteBuilder: knitr

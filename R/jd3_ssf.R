@@ -233,7 +233,7 @@ setMethod("estimate", "JD3_SsfModel", function(object, data, marginal=F, concent
     jparams<-.jnull("[D")
     if (! is.null(initialParameters))
       jparams<-.jarray(initialParameters)
-    jdata<-matrix_r2jd(data)
+    jdata<-.JD3_ENV$matrix_r2jd(data)
     jrslt<-.jcall("rssf/CompositeModels", "Lrssf/CompositeModels$Results;", "estimate",object@internal, jdata, marginal, concentrated, initialization, optimizer, precision, jparams)
     return( new(Class= "JD3_SsfModelEstimation", internal=jrslt))
   }
@@ -253,7 +253,7 @@ setMethod("compute", signature = c(object="JD3_SsfModel"), function(object, data
   if ( is.jnull(object@internal) ){
     return(NULL)
   }else{
-    jdata<-matrix_r2jd(data)
+    jdata<-.JD3_ENV$matrix_r2jd(data)
     
     
     jrslt<-.jcall("rssf/CompositeModels", "Lrssf/CompositeModels$Results;", "compute", object@internal, jdata, .jarray(parameters), marginal, concentrated)

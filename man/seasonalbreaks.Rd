@@ -6,6 +6,7 @@
 \usage{
 seasonalbreaks(
   y,
+  period = NA,
   level = 1,
   slope = 1,
   noise = 1,
@@ -16,6 +17,8 @@ seasonalbreaks(
 }
 \arguments{
 \item{y}{}
+
+\item{period}{}
 
 \item{level}{-1 = no level, 0 = fixed level, 1 = sotchastic level}
 

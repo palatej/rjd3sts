@@ -2,6 +2,7 @@
 #' Title
 #'
 #' @param y 
+#' @param period 
 #' @param level -1 = no level, 0 = fixed level, 1 = sotchastic level
 #' @param slope 
 #' @param noise 
@@ -16,24 +17,33 @@
 #' @export
 #'
 #' @examples
-seasonalbreaks<-function(y, level=1, slope=1, noise=1, seasonal=c("HarrisonStevens", "Trigonometric", "Dummy", "Crude", "Fixed", "Unused"),
+seasonalbreaks<-function(y, period=NA, level=1, slope=1, noise=1, seasonal=c("HarrisonStevens", "Trigonometric", "Dummy", "Crude", "Fixed", "Unused"),
                        X=NULL,X.td=NULL){
   
-  if (!is.ts(y)){
-    stop("y must be a time series")
+  data<-as.numeric(y)
+  if (is.ts(y)){
+    period<-frequency(y)
+  }else{
+    if (! is.null(X.td)){
+      stop("y must be a time series when X.td is used")
+    }
+    if (is.na(period)){
+      stop("y must be a time series or period must be specified")
+    }
   }
   seasonal<-match.arg(seasonal)
-
-  
   if (! is.null(X.td)){
-    sy<-start(y)
-    td<-tradingdays(X.td, frequency(y), sy[1], sy[2], length(y))
+    td<-rjd3modelling::td.forTs(y, X.td)
     X<-cbind(X, td)
   }
 
-  so<-.jcall("demetra/sts/r/StsOutliersDetection", "[D", "seasonalBreaks", .JD3_ENV$ts_r2jd(y), 
+  so<-.jcall("demetra/sts/r/StsOutliersDetection", "[D", "seasonalBreaks", data, as.integer(period), 
                as.integer(level), as.integer(slope), as.integer(noise), seasonal, .JD3_ENV$matrix_r2jd(X))
   
-  return (ts(so, frequency = frequency(y), start=start(y)))
+  if (is.ts(y)){
+    return (ts(so, frequency = period, start=start(y)))
+  }else{
+    return (so)
+  }
 }
   

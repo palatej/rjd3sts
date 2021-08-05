@@ -9,7 +9,7 @@
   data,
   marginal = F,
   concentrated = T,
-  initialization = c("Diffuse", "SqrtDiffuse", "Augmented"),
+  initialization = c("Diffuse", "SqrtDiffuse", "Augmented", "Augmented_NoCollapsing"),
   optimizer = c("LevenbergMarquardt", "MinPack", "BFGS", "LBFGS"),
   precision = 1e-15,
   initialParameters = NULL

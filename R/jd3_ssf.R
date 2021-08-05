@@ -224,7 +224,7 @@ setMethod("add", signature = c(object="JD3_SsfModel", item = "JD3_SsfEquation"),
 #'
 #' @examples
 setMethod("estimate", "JD3_SsfModel", function(object, data, marginal=F, concentrated=T,
-              initialization=c("Diffuse", "SqrtDiffuse", "Augmented"), optimizer=c("LevenbergMarquardt", "MinPack", "BFGS", "LBFGS"), precision=1e-15, initialParameters=NULL){
+              initialization=c("Diffuse", "SqrtDiffuse", "Augmented", "Augmented_NoCollapsing"), optimizer=c("LevenbergMarquardt", "MinPack", "BFGS", "LBFGS"), precision=1e-15, initialParameters=NULL){
   initialization=match.arg(initialization)
   optimizer=match.arg(optimizer)
   if ( is.jnull(object@internal) ){
@@ -329,6 +329,23 @@ cycle<-function(name, factor=.9, period=60, fixed=F, variance=.01, fixedvariance
   new (Class = "JD3_SsfStateBlock", internal = jrslt)
 }
 
+#' Title
+#'
+#' @param name 
+#' @param period 
+#' @param harmonics 
+#' @param variance 
+#' @param fixedvariance 
+#'
+#' @return
+#' @export
+#'
+#' @examples
+periodic<-function(name, period, harmonics, variance=.01, fixedvariance=FALSE){
+  
+  jrslt<-.jcall("jdplus/msts/AtomicModels", "Ljdplus/msts/StateItem;", "periodicComponent", name, period, .jarray(as.integer(harmonics)), variance, fixedvariance)
+  new (Class = "JD3_SsfStateBlock", internal = jrslt)
+}
 
 
 #' Title

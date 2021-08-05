@@ -1,4 +1,4 @@
-#' @include protobuf.R
+#' @include protobuf.R jd3_ssf.R
 NULL
 
 #' Title
@@ -37,6 +37,67 @@ sts<-function(y, X=NULL, X.td=NULL, level=1, slope=1, cycle=-1, noise=1
   p<-RProtoBuf::read(sts.Bsm, buffer)
   return (p2r_sts_rslts(p))
 }
+
+#' Title
+#'
+#' @param y 
+#' @param period 
+#' @param X 
+#' @param X.td 
+#' @param level 
+#' @param slope 
+#' @param cycle 
+#' @param noise 
+#' @param seasonal 
+#' @param diffuse.regs 
+#' @param tol 
+#'
+#' @return
+#' @export
+#'
+#' @examples
+sts.raw<-function(y, period=NA, X=NULL, X.td=NULL, level=1, slope=1, cycle=-1, noise=1
+                  , seasonal=c("Trigonometric", "Dummy", "Crude", "HarrisonStevens", "Fixed", "Unused"), diffuse.regs=T, tol=1e-9){
+  
+  data<-as.numeric(y)
+  if (is.ts(y)){
+    period<-frequency(y)
+  }else{
+    if (! is.null(X.td)){
+      stop("y must be a time series when X.td is used")
+    }
+    if (is.na(period)){
+      stop("y must be a time series or period must be specified")
+    }
+  }
+  seasonal<-match.arg(seasonal)
+  if (! is.null(X.td)){
+    td<-rjd3modelling::td.forTs(y, X.td)
+    X<-cbind(X, td)
+  }
+  bsm<-model()
+  # create the components and add them to the model
+  add(bsm, locallineartrend("ll"))
+  add(bsm, seasonal("s", period, type=seasonal))
+  add(bsm, noise("n"))
+  if (! is.null(X)){
+    add(bsm, reg("X", X))
+  }
+  # create the equation 
+  eq<-equation("eq")
+  add(eq, "ll")
+  add(eq, "s")
+  add(eq, "n")
+  if (! is.null(X)){
+    add(eq, "X")
+  }
+  add(bsm, eq)
+  #estimate the model
+  rslt<-estimate(bsm, data, marginal=T, concentrated=TRUE, precision = 1e-9)
+  return(rslt)
+}
+
+
 
 #' Title
 #'

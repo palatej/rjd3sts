@@ -3,6 +3,7 @@ NULL
 #' Title
 #'
 #' @param y 
+#' @param period 
 #' @param X 
 #' @param X.td 
 #' @param level 
@@ -21,13 +22,21 @@ NULL
 #' @export
 #'
 #' @examples
-sts.outliers<-function(y, X=NULL, X.td=NULL, level=1, slope=1, noise=1, seasonal=c("Trigonometric", "Dummy", "Crude", "HarrisonStevens", "Fixed", "Unused"),
+sts.outliers<-function(y, period=NA, X=NULL, X.td=NULL, level=1, slope=1, noise=1, seasonal=c("Trigonometric", "Dummy", "Crude", "HarrisonStevens", "Fixed", "Unused"),
               ao=T, ls=T, so=F, 
               cv=0, tcv=0, estimation.forward=c("Score", "Point", "Full"), 
               estimation.backward=c("Point", "Score", "Full")){
   
-  if (!is.ts(y)){
-    stop("y must be a time series")
+  data<-as.numeric(y)
+  if (is.ts(y)){
+    period<-frequency(y)
+  }else{
+    if (! is.null(X.td)){
+      stop("y must be a time series when X.td is used")
+    }
+    if (is.na(period)){
+      stop("y must be a time series or period must be specified")
+    }
   }
   seasonal<-match.arg(seasonal)
   estimation.forward<-match.arg(estimation.forward)
@@ -40,7 +49,7 @@ sts.outliers<-function(y, X=NULL, X.td=NULL, level=1, slope=1, noise=1, seasonal
   }
       
   
-  jsts<-.jcall("demetra/sts/r/StsOutliersDetection", "Ldemetra/sts/r/StsOutliersDetection$Results;", "process", .JD3_ENV$ts_r2jd(y), 
+  jsts<-.jcall("demetra/sts/r/StsOutliersDetection", "Ldemetra/sts/r/StsOutliersDetection$Results;", "process", data, as.integer(period), 
               as.integer(level), as.integer(slope), as.integer(noise), seasonal, .JD3_ENV$matrix_r2jd(X),
               ao, ls, so, cv, tcv, estimation.forward, estimation.backward)
   model<-list(

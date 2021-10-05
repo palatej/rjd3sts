@@ -543,16 +543,89 @@ noise<-function(name, variance=.01, fixed=FALSE){
 #' Title
 #'
 #' @param name 
-#' @param weights 
-#' @param variance 
+#' @param std 
+#' @param scale 
 #' @param fixed 
 #'
 #' @return
 #' @export
 #'
 #' @examples
-weightednoise<-function(name, weights, variance=.01, fixed=FALSE){
-  jrslt<-.jcall("jdplus/msts/AtomicModels", "Ljdplus/msts/StateItem;", "weightedNoise", name, as.double(weights), variance, fixed)
+varnoise<-function(name, std, scale=1, fixed=FALSE){
+  jrslt<-.jcall("jdplus/msts/AtomicModels", "Ljdplus/msts/StateItem;", "noise", name, as.double(std), scale, fixed)
+  new (Class = "JD3_SsfStateBlock", internal = jrslt)
+}
+
+#' Title
+#'
+#' @param name 
+#' @param std 
+#' @param scale 
+#' @param fixed 
+#' @param initial 
+#'
+#' @return
+#' @export
+#'
+#' @examples
+varlocallevel<-function(name, std, scale=1, fixed=FALSE, initial=NaN){
+  
+  
+  jrslt<-.jcall("jdplus/msts/AtomicModels", "Ljdplus/msts/StateItem;", "localLevel", name, as.double(std), scale, fixed, initial)
+  
+  
+  new (Class = "JD3_SsfStateBlock", internal = jrslt)
+}
+
+#' Title
+#'
+#' @param name 
+#' @param lstd 
+#' @param sstd 
+#' @param levelScale 
+#' @param slopeScale 
+#' @param fixedLevelScale 
+#' @param fixedSlopeScale 
+#'
+#' @return
+#' @export
+#'
+#' @examples
+varlocallineartrend<-function(name, lstd, sstd=NULL, levelScale=1, slopeScale=1, fixedLevelScale=FALSE, fixedSlopeScale=FALSE ){
+  
+  if (is.null(sstd)){
+    jsstd<-.jnull("[D")
+  }else{
+    jsstd<-.jarray(sstd)
+  }
+  
+  
+  jrslt<-.jcall("jdplus/msts/AtomicModels", "Ljdplus/msts/StateItem;", "localLinearTrend", name, lstd, jsstd, levelScale, slopeScale,
+                fixedLevelScale, fixedSlopeScale)
+  
+  
+  new (Class = "JD3_SsfStateBlock", internal = jrslt)
+}
+
+#' Title
+#'
+#' @param name 
+#' @param period 
+#' @param type 
+#' @param std 
+#' @param scale 
+#' @param fixed 
+#'
+#' @return
+#' @export
+#'
+#' @examples
+varseasonal<-function(name, period, type=c("Trigonometric", "Crude", "HarrisonStevens", "Dummy"), std, scale=1, fixed=FALSE){
+  
+  type=match.arg(type)
+  jrslt<-.jcall("jdplus/msts/AtomicModels", "Ljdplus/msts/StateItem;", "seasonalComponent", name, type, as.integer(period), as.double(std), scale, fixed)
+  
+  
   new (Class = "JD3_SsfStateBlock", internal = jrslt)
 }
 

@@ -193,7 +193,7 @@ setMethod("loading", signature = c(object="JD3_SsfModelEstimation"), function(ob
   if ( is.jnull(object@internal)){
     return
   }else{
-      jm<-.jcall(object@internal, "Ldemetra/math/matrices/MatrixType;", "loading", as.integer(obs-1))
+      jm<-.jcall(object@internal, "Ldemetra/math/matrices/Matrix;", "loading", as.integer(obs-1))
       return (.JD3_ENV$matrix_jd2r(jm))
   }
 })

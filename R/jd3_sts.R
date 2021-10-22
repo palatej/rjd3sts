@@ -121,7 +121,7 @@ sts.forecast<-function(y, model=c("none", "td2", "td3", "td7", "full"), nf=12){
   if (!is.ts(y)){
     stop("y must be a time series")
   }
-  jf<-.jcall("demetra/sts/r/Bsm", "Ldemetra/math/matrices/MatrixType;", "forecast", .JD3_ENV$ts_r2jd(y), model, as.integer((nf)))
+  jf<-.jcall("demetra/sts/r/Bsm", "Ldemetra/math/matrices/Matrix;", "forecast", .JD3_ENV$ts_r2jd(y), model, as.integer((nf)))
   return (.JD3_ENV$matrix_jd2r(jf))
   
 }

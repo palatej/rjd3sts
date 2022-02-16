@@ -224,7 +224,7 @@ setMethod("add", signature = c(object="JD3_SsfModel", item = "JD3_SsfEquation"),
 #'
 #' @examples
 setMethod("estimate", "JD3_SsfModel", function(object, data, marginal=F, concentrated=T,
-              initialization=c("Diffuse", "SqrtDiffuse", "Augmented", "Augmented_NoCollapsing"), optimizer=c("LevenbergMarquardt", "MinPack", "BFGS", "LBFGS"), precision=1e-15, initialParameters=NULL){
+              initialization=c("Augmented_Robust", "Diffuse", "SqrtDiffuse", "Augmented", "Augmented_NoCollapsing"), optimizer=c("LevenbergMarquardt", "MinPack", "BFGS", "LBFGS"), precision=1e-15, initialParameters=NULL){
   initialization=match.arg(initialization)
   optimizer=match.arg(optimizer)
   if ( is.jnull(object@internal) ){

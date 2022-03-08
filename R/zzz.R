@@ -1,12 +1,13 @@
+#' @include utils.R
+NULL
 
 .onLoad <- function(libname, pkgname) {
-  suppressMessages(require(rjd3sa, quietly = T))
-  
-  result <- .jpackage(pkgname, lib.loc=libname)
+  if (! requireNamespace('rjd3sa', quietly = T)) stop("Loading rjd3 libraries failed")
+
+  result <- rJava::.jpackage(pkgname, lib.loc=libname)
   if (!result) stop("Loading java packages failed")
 
   proto.dir <- system.file("proto", package = pkgname)
-  readProtoFiles2(protoPath = proto.dir)
-
+  RProtoBuf::readProtoFiles2(protoPath = proto.dir)
 }
 

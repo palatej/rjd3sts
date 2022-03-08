@@ -1,4 +1,4 @@
-#' @include protobuf.R jd3_ssf.R
+#' @include utils.R jd3_ssf.R
 NULL
 
 #' Title
@@ -29,8 +29,8 @@ sts<-function(y, X=NULL, X.td=NULL, level=1, slope=1, cycle=-1, noise=1
     td<-rjd3modelling::td.forTs(y, X.td)
     X<-cbind(X, td)
   }
-  jts<-.JD3_ENV$ts_r2jd(y)
-  jx<-.JD3_ENV$matrix_r2jd(X)
+  jts<-rjd3toolkit:::ts_r2jd(y)
+  jx<-rjd3toolkit:::matrix_r2jd(X)
   jsts<-.jcall("demetra/sts/r/Bsm", "Ldemetra/sts/BasicStructuralModel;", "process", jts, jx,
               as.integer(level), as.integer(slope), as.integer(cycle), as.integer(noise), seasonal, as.logical(diffuse.regs), tol)
   buffer<-.jcall("demetra/sts/r/Bsm", "[B", "toBuffer", jsts)
@@ -121,8 +121,8 @@ sts.forecast<-function(y, model=c("none", "td2", "td3", "td7", "full"), nf=12){
   if (!is.ts(y)){
     stop("y must be a time series")
   }
-  jf<-.jcall("demetra/sts/r/Bsm", "Ldemetra/math/matrices/Matrix;", "forecast", .JD3_ENV$ts_r2jd(y), model, as.integer((nf)))
-  return (.JD3_ENV$matrix_jd2r(jf))
+  jf<-.jcall("demetra/sts/r/Bsm", "Ldemetra/math/matrices/Matrix;", "forecast", rjd3toolkit:::ts_r2jd(y), model, as.integer((nf)))
+  return (rjd3toolkit:::matrix_jd2r(jf))
   
 }
 
@@ -139,10 +139,10 @@ p2r_sts_rslts<-function(p){
 p2r_sts_estimation<-function(p){
   return (list(
     y=p$y,
-    X=.JD3_ENV$p2r_matrix(p$x),
-    parameters=.JD3_ENV$p2r_parameters_estimation(p$parameters),
+    X=rjd3toolkit:::p2r_matrix(p$x),
+    parameters=rjd3toolkit:::p2r_parameters_estimation(p$parameters),
     b=p$b,
-    bvar=.JD3_ENV$p2r_matrix(p$bcovariance),
+    bvar=rjd3toolkit:::p2r_matrix(p$bcovariance),
     likelihood=p2r_diffuselikelihood(p$likelihood),
     res=p$residuals))
 }
@@ -150,9 +150,9 @@ p2r_sts_estimation<-function(p){
 p2r_sts_description<-function(p){
   return (list(
     log=p$log,
-    preadjustment = .JD3_ENV$enum_extract(modelling.LengthOfPeriod, p$preadjustment),
+    preadjustment = rjd3toolkit:::enum_extract(modelling.LengthOfPeriod, p$preadjustment),
     bsm=p2r_spec_bsm(p$bsm),
-    variables=.JD3_ENV$p2r_variables(p$variables)))
+    variables=rjd3toolkit:::p2r_variables(p$variables)))
 }
 
 p2r_sts_components<-function(p){
@@ -174,14 +174,14 @@ p2r_sts_component<-function(p){
 
 p2r_spec_bsm<-function(p){
   return (list(
-    level=.JD3_ENV$p2r_parameter(p$level),
-    slope=.JD3_ENV$p2r_parameter(p$slope),
-    seas=.JD3_ENV$p2r_parameter(p$seas),
-    seasmodel=.JD3_ENV$enum_extract(sts.SeasonalModel, p$seasonal_model),
-    noise=.JD3_ENV$p2r_parameter(p$noise),
-    cycle=.JD3_ENV$p2r_parameter(p$cycle),
-    cyclelength=.JD3_ENV$p2r_parameter(p$cycle_period),
-    cyclefactor=.JD3_ENV$p2r_parameter(p$cycle_factor)
+    level=rjd3toolkit:::p2r_parameter(p$level),
+    slope=rjd3toolkit:::p2r_parameter(p$slope),
+    seas=rjd3toolkit:::p2r_parameter(p$seas),
+    seasmodel=rjd3toolkit:::enum_extract(sts.SeasonalModel, p$seasonal_model),
+    noise=rjd3toolkit:::p2r_parameter(p$noise),
+    cycle=rjd3toolkit:::p2r_parameter(p$cycle),
+    cyclelength=rjd3toolkit:::p2r_parameter(p$cycle_period),
+    cyclefactor=rjd3toolkit:::p2r_parameter(p$cycle_factor)
   ))
   
 }

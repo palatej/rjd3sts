@@ -1,4 +1,6 @@
+#' @include utils.R
 NULL
+
 
 #' Title
 #'
@@ -50,30 +52,30 @@ sts.outliers<-function(y, period=NA, X=NULL, X.td=NULL, level=1, slope=1, noise=
       
   
   jsts<-.jcall("demetra/sts/r/StsOutliersDetection", "Ldemetra/sts/r/StsOutliersDetection$Results;", "process", data, as.integer(period), 
-              as.integer(level), as.integer(slope), as.integer(noise), seasonal, .JD3_ENV$matrix_r2jd(X),
+              as.integer(level), as.integer(slope), as.integer(noise), seasonal, rjd3toolkit:::matrix_r2jd(X),
               ao, ls, so, cv, tcv, estimation.forward, estimation.backward)
   model<-list(
     y=as.numeric(y),
-    variables=.JD3_ENV$proc_vector(jsts, "variables"),
-    X=.JD3_ENV$proc_matrix(jsts, "regressors"),
-    b=.JD3_ENV$proc_vector(jsts, "b"),
-    bcov=.JD3_ENV$proc_matrix(jsts, "bvar"),
-    components=.JD3_ENV$proc_matrix(jsts, "cmps"),
-    linearized=.JD3_ENV$proc_vector(jsts, "linearized")
+    variables=rjd3toolkit:::proc_vector(jsts, "variables"),
+    X=rjd3toolkit:::proc_matrix(jsts, "regressors"),
+    b=rjd3toolkit:::proc_vector(jsts, "b"),
+    bcov=rjd3toolkit:::proc_matrix(jsts, "bvar"),
+    components=rjd3toolkit:::proc_matrix(jsts, "cmps"),
+    linearized=rjd3toolkit:::proc_vector(jsts, "linearized")
   )
   
-  l0<-.JD3_ENV$proc_numeric(jsts, "initialbsm.levelvar")
-  s0<-.JD3_ENV$proc_numeric(jsts, "initialbsm.slopevar")
-  seas0<-.JD3_ENV$proc_numeric(jsts, "initialbsm.seasvar")
-  n0<-.JD3_ENV$proc_numeric(jsts, "initialbsm.noisevar")
-  tau0=.JD3_ENV$proc_matrix(jsts, "initialtau")
+  l0<-rjd3toolkit:::proc_numeric(jsts, "initialbsm.levelvar")
+  s0<-rjd3toolkit:::proc_numeric(jsts, "initialbsm.slopevar")
+  seas0<-rjd3toolkit:::proc_numeric(jsts, "initialbsm.seasvar")
+  n0<-rjd3toolkit:::proc_numeric(jsts, "initialbsm.noisevar")
+  tau0=rjd3toolkit:::proc_matrix(jsts, "initialtau")
   
   
-  l1<-.JD3_ENV$proc_numeric(jsts, "finalbsm.levelvar")
-  s1<-.JD3_ENV$proc_numeric(jsts, "finalbsm.slopevar")
-  seas1<-.JD3_ENV$proc_numeric(jsts, "finalbsm.seasvar")
-  n1<-.JD3_ENV$proc_numeric(jsts, "finalbsm.noisevar")
-  tau1=.JD3_ENV$proc_matrix(jsts, "finaltau")
+  l1<-rjd3toolkit:::proc_numeric(jsts, "finalbsm.levelvar")
+  s1<-rjd3toolkit:::proc_numeric(jsts, "finalbsm.slopevar")
+  seas1<-rjd3toolkit:::proc_numeric(jsts, "finalbsm.seasvar")
+  n1<-rjd3toolkit:::proc_numeric(jsts, "finalbsm.noisevar")
+  tau1=rjd3toolkit:::proc_matrix(jsts, "finaltau")
   
   ll0<-proc_diffuselikelihood(jsts, "initiallikelihood.")
   ll1<-proc_diffuselikelihood(jsts, "finallikelihood.")

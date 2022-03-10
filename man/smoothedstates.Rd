@@ -4,7 +4,7 @@
 \alias{smoothedstates}
 \title{Title}
 \usage{
-smoothedstates(rslt)
+smoothedstates(model)
 }
 \arguments{
 \item{rslt}{}

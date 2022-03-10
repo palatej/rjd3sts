@@ -152,7 +152,7 @@ p2r_sts_description<-function(p){
     log=p$log,
     preadjustment = rjd3toolkit:::enum_extract(modelling.LengthOfPeriod, p$preadjustment),
     bsm=p2r_spec_bsm(p$bsm),
-    variables=rjd3toolkit:::p2r_variables(p$variables)))
+    variables=rjd3modelling:::p2r_variables(p$variables)))
 }
 
 p2r_sts_components<-function(p){

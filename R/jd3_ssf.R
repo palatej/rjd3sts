@@ -487,7 +487,7 @@ varseasonal<-function(name, period, type=c("Trigonometric", "Crude", "HarrisonSt
   jrslt<-.jcall("jdplus/msts/AtomicModels", "Ljdplus/msts/StateItem;", "seasonalComponent", name, type, as.integer(period), as.double(std), scale, fixed)
   
   
-  new (Class = "JD3_SsfStateBlock", internal = jrslt)
+  return (rjd3toolkit:::jd3Object(jrslt, STATEBLOCK))
 }
 
 #' Title
@@ -813,7 +813,7 @@ smoothedstates<-function(model){
   if ( is.jnull(model$internal) ){
     return(NULL)
   }
-  return(rjd3toolkit:::result(model, "ssf.smoothing.states"))
+  return(rjd3toolkit::result(model, "ssf.smoothing.states"))
 }
 
 #' Title
@@ -830,7 +830,7 @@ smoothedstatesstdev<-function(rslt){
   if ( is.jnull(rslt$internal) ){
     return(NULL)
   }
-  return(sqrt(rjd3toolkit:::result(rslt, "ssf.smoothing.vstates")))
+  return(sqrt(rjd3toolkit::result(rslt, "ssf.smoothing.vstates")))
 }
 
 #' Title
@@ -847,7 +847,7 @@ filteredstates<-function(rslt){
   if ( is.jnull(rslt$internal) ){
     return(NULL)
   }
-  return(rjd3toolkit:::result(rslt, "ssf.filtered.states"))
+  return(rjd3toolkit::result(rslt, "ssf.filtered.states"))
 }
 
 #' Title
@@ -864,7 +864,7 @@ filteredstatesstdev<-function(rslt){
   if ( is.jnull(rslt$internal) ){
     return(NULL)
   }
-  return(sqrt(rjd3toolkit:::result(rslt, "ssf.filtered.vstates")))
+  return(sqrt(rjd3toolkit::result(rslt, "ssf.filtered.vstates")))
 }
 
 #' Title
@@ -881,7 +881,7 @@ filteringstatesstdev<-function(rslt){
   if ( is.jnull(rslt$internal) ){
     return(NULL)
   }
-  return(sqrt(rjd3toolkit:::result(rslt, "ssf.filtering.vstates")))
+  return(sqrt(rjd3toolkit::result(rslt, "ssf.filtering.vstates")))
 }
 
 #' Title
@@ -898,6 +898,6 @@ filteringstates<-function(rslt){
   if ( is.jnull(rslt$internal) ){
     return(NULL)
   }
-  return(rjd3toolkit:::result(rslt, "ssf.filtering.states"))
+  return(rjd3toolkit::result(rslt, "ssf.filtering.states"))
 }
 

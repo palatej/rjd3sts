@@ -4,7 +4,7 @@
 \alias{varreg}
 \title{Title}
 \usage{
-varreg(name, x, stderr, scale, fixed = F)
+varreg(name, x, stderr, scale = 1, fixed = F)
 }
 \arguments{
 \item{name}{}

@@ -188,41 +188,42 @@ p2r_spec_bsm<-function(p){
 
 #' Title
 #'
-#' @param m 
+#' @param x 
+#' @param ... 
 #'
 #' @return
 #' @export
 #'
 #' @examples
-print.JD3STS<-function(m){
+print.JD3STS<-function(x, ...){
   cat("Structural time series", "\n\n")
   cat("Variances:\n")
-  s<-m$description$bsm$level
+  s<-x$description$bsm$level
   if (! is.null(s)) cat("level: ", format(round(s$value, 6), scientific = FALSE), "\n")
-  s<-m$description$bsm$slope
+  s<-x$description$bsm$slope
   if (! is.null(s)) cat("slope: ", format(round(s$value, 6), scientific = FALSE), "\n")
-  s<-m$description$bsm$seas
+  s<-x$description$bsm$seas
   if (! is.null(s)) cat("seasonal: ", format(round(s$value, 6), scientific = FALSE), "\n")
-  s<-m$description$bsm$noise
+  s<-x$description$bsm$noise
   if (! is.null(s)) cat("noise: ", format(round(s$value, 6), scientific = FALSE), "\n\n")
-  s<-m$description$bsm$cycle
+  s<-x$description$bsm$cycle
   if (! is.null(s)) {
     cat("cycle: ", format(round(s$value, 6), scientific = FALSE), "\n\n")
   }
   
-  s<-m$estimation$likelihood$ll
+  s<-x$estimation$likelihood$ll
   cat("LogLikelihood: ", format(round(s, 5), scientific = FALSE), "\n")
-  s<-m$estimation$likelihood$aic
+  s<-x$estimation$likelihood$aic
   cat("AIC: ", format(round(s, 5), scientific = FALSE), "\n\n")
   
-  if (length(m$description$variables) > 0){
+  if (length(x$description$variables) > 0){
     cat("Regression:\n")
-    regs<-do.call("rbind", lapply(m$description$variables, function(z){z$coeff}))
+    regs<-do.call("rbind", lapply(x$description$variables, function(z){z$coeff}))
     xregs<-cbind(regs, stde=NA, t=NA, pvalue=NA)
-    stde<-sqrt(diag(m$estimation$bvar))
+    stde<-sqrt(diag(x$estimation$bvar))
     sel<-xregs$type=='ESTIMATED'
     t<-xregs$value[sel]/stde
-    ndf<-m$estimation$likelihood$nobs-m$estimation$likelihood$ndiffuse-m$estimation$likelihood$nparams+1
+    ndf<-x$estimation$likelihood$nobs-x$estimation$likelihood$ndiffuse-x$estimation$likelihood$nparams+1
     pval<-2*pt(abs(t), ndf, lower.tail = F)
     xregs$stde[sel]<-stde
     xregs$t[sel]<-t

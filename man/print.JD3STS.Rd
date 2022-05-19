@@ -4,10 +4,12 @@
 \alias{print.JD3STS}
 \title{Title}
 \usage{
-\method{print}{JD3STS}(m)
+\method{print}{JD3STS}(x, ...)
 }
 \arguments{
-\item{m}{}
+\item{x}{}
+
+\item{...}{}
 }
 \value{
 

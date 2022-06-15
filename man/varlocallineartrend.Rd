@@ -29,9 +29,6 @@ varlocallineartrend(
 
 \item{fixedSlopeScale}{}
 }
-\value{
-
-}
 \description{
 Title
 }

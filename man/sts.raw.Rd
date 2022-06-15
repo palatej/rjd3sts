@@ -41,9 +41,6 @@ sts.raw(
 
 \item{tol}{}
 }
-\value{
-
-}
 \description{
 Title
 }

@@ -17,9 +17,6 @@ add.equation(equation, item, coeff = 1, fixed = TRUE, loading = NULL)
 
 \item{loading}{}
 }
-\value{
-
-}
 \description{
 Title
 }

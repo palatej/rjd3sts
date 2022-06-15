@@ -13,9 +13,6 @@ equation(name, variance = 0, fixed = T)
 
 \item{fixed}{}
 }
-\value{
-
-}
 \description{
 Title
 }

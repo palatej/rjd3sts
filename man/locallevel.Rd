@@ -2,22 +2,26 @@
 % Please edit documentation in R/jd3_ssf.R
 \name{locallevel}
 \alias{locallevel}
-\title{Title}
+\title{Local Level}
 \usage{
 locallevel(name, variance = 0.01, fixed = FALSE, initial = NaN)
 }
 \arguments{
-\item{name}{}
+\item{name}{name of the component.}
 
-\item{variance}{}
+\item{variance}{the value of the variance (\eqn{\sigma^2_l}).}
 
-\item{fixed}{}
+\item{fixed}{boolean that triggers estimation of \eqn{\sigma^2_l} (\code{FALSE}) or
+fixes it (\code{TRUE}) to a pre-specified  value set by the parameter \code{variance}.}
 
-\item{initial}{}
-}
-\value{
-
+\item{initial}{initial value of the level (\eqn{l_0}).}
 }
 \description{
-Title
+Local Level
+}
+\details{
+\deqn{\begin{cases}l_{t+1} = l_t + \mu_t \\
+ \mu_t \sim N(0, \sigma^2 \sigma^2_l)
+ \end{cases}
+}
 }

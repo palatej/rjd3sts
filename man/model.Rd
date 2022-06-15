@@ -6,9 +6,6 @@
 \usage{
 model()
 }
-\value{
-
-}
 \description{
 Title
 }

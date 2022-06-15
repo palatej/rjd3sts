@@ -15,9 +15,6 @@ reg(name, x, var = NULL, fixed = F)
 
 \item{fixed}{}
 }
-\value{
-
-}
 \description{
 Title
 }

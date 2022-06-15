@@ -17,9 +17,6 @@ signal(object, obs = 1, pos = NULL, loading = NULL, stdev = F)
 
 \item{stdev}{}
 }
-\value{
-
-}
 \description{
 Title
 }

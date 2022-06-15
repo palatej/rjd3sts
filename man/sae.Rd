@@ -17,9 +17,6 @@ sae(name, ar, fixedar = FALSE, lag = 1, zeroinit = FALSE)
 
 \item{zeroinit}{}
 }
-\value{
-
-}
 \description{
 Title
 }

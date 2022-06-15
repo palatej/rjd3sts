@@ -32,9 +32,6 @@ td(
 
 \item{fixed}{}
 }
-\value{
-
-}
 \description{
 Title
 }

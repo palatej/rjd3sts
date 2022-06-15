@@ -17,9 +17,6 @@ varreg(name, x, stderr, scale = 1, fixed = F)
 
 \item{fixed}{Fixed scaling factor}
 }
-\value{
-
-}
 \description{
 Title
 }

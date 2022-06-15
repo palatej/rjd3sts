@@ -33,9 +33,6 @@ estimate(
 
 \item{initialParameters}{}
 }
-\value{
-
-}
 \description{
 Title
 }

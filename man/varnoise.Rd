@@ -15,9 +15,6 @@ varnoise(name, std, scale = 1, fixed = FALSE)
 
 \item{fixed}{}
 }
-\value{
-
-}
 \description{
 Title
 }

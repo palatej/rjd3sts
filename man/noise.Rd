@@ -13,9 +13,6 @@ noise(name, variance = 0.01, fixed = FALSE)
 
 \item{fixed}{}
 }
-\value{
-
-}
 \description{
 Title
 }

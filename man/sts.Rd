@@ -38,9 +38,6 @@ sts(
 
 \item{tol}{}
 }
-\value{
-
-}
 \description{
 Title
 }

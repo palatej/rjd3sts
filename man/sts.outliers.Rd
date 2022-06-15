@@ -53,9 +53,6 @@ sts.outliers(
 
 \item{estimation.backward}{}
 }
-\value{
-
-}
 \description{
 Title
 }

@@ -11,9 +11,6 @@ aggregation(name, components)
 
 \item{components}{}
 }
-\value{
-
-}
 \description{
 Title
 }

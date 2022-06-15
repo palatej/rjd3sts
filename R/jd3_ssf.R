@@ -193,23 +193,47 @@ compute<-function(model, data, parameters, marginal=FALSE, concentrated=TRUE){
 
 
 
-#' Title
+#' Autoregressive model
+#' 
+#' Functions to create an autoregressive model (`ar`) or a 
+#' modified autoregressive model (`ar2`)
+#' 
+#' 
 #'
-#' @param name 
-#' @param ar 
-#' @param fixedar 
-#' @param variance 
-#' @param fixedvariance 
-#' @param nlags 
-#' @param zeroinit 
+#' @param ar vector of the AR coefficients (\eqn{\varphi_1, \dots, \varphi_p}).
+#' @param fixedar boolean that triggers the estimation of the AR coefficients (`FALSE`)
+#' or fixed it (`TRUE`) to a pre-specified value set by the parameter `ar`.
+#' @param variance the variance (\eqn{\sigma^2_{ar}}).
+#' @param fixedvariance boolean that triggers the estimation of the variance (`FALSE`)
+#' or fixed it (`TRUE`) to a pre-specified value set by the parameter `variance`.
+#' @param nlags integer specifying how many lags of the state variable are needed
+#' @param zeroinit boolean determining the initial condition for the state variable, 
+#' which is equal to zero if `zeroinit = TRUE`. 
+#' The default (`zeroinit = FAKSE`) triggers the an initialization based on the 
+#' unconditional mean and variance of the AR(p) process.
 #'
+#' @details 
+#' The AR process is defined by
+#' \deqn{\Phi\left(B\right)y_t=\epsilon_t} 
+#' where
+#' \deqn{\Phi\left(B\right)=1+\varphi_1 B + \cdots + \varphi_p B^p}  
+#' is an auto-regressive polynomial. 
 #' @return
+#' 
 #' @export
 #'
 #' @examples
 ar<-function(name, ar, fixedar=FALSE, variance=.01, fixedvariance=FALSE, nlags=0, zeroinit=FALSE){
 
   jrslt<-.jcall("jdplus/msts/AtomicModels", "Ljdplus/msts/StateItem;", "ar", name, .jarray(ar), fixedar, variance, fixedvariance, as.integer(nlags), zeroinit)
+  return (rjd3toolkit:::jd3Object(jrslt, STATEBLOCK))
+}
+
+#' @rdname ar
+#' @param nfcasts integer specifying how many forecasts of the state variable are needed
+#' @export
+ar2<-function(name, ar, fixedar=FALSE, variance=.01, fixedvariance=FALSE, nlags=0, nfcasts=0){
+  jrslt<-.jcall("jdplus/msts/AtomicModels", "Ljdplus/msts/StateItem;", "ar", name, .jarray(ar), fixedar, variance, fixedvariance, as.integer(nlags), as.integer(nfcasts))
   return (rjd3toolkit:::jd3Object(jrslt, STATEBLOCK))
 }
 
@@ -249,24 +273,7 @@ periodic<-function(name, period, harmonics, variance=.01, fixedvariance=FALSE){
 }
 
 
-#' Title
-#'
-#' @param name 
-#' @param ar 
-#' @param fixedar 
-#' @param variance 
-#' @param fixedvariance 
-#' @param nlags 
-#' @param nfcasts 
-#'
-#' @return
-#' @export
-#'
-#' @examples
-ar2<-function(name, ar, fixedar=FALSE, variance=.01, fixedvariance=FALSE, nlags=0, nfcasts=0){
-  jrslt<-.jcall("jdplus/msts/AtomicModels", "Ljdplus/msts/StateItem;", "ar", name, .jarray(ar), fixedar, variance, fixedvariance, as.integer(nlags), as.integer(nfcasts))
-  return (rjd3toolkit:::jd3Object(jrslt, STATEBLOCK))
-}
+
 
 
 
@@ -342,12 +349,19 @@ msae3<-function(name, vars, fixedvars=F, ar, fixedar=T, k, lag=1){
   return (rjd3toolkit:::jd3Object(jrslt, STATEBLOCK))
 }
 
-#' Title
+#' Local Level
 #'
-#' @param name 
-#' @param variance 
-#' @param fixed 
-#' @param initial 
+#' @param name name of the component.
+#' @param variance the value of the variance (\eqn{\sigma^2_l}).
+#' @param fixed boolean that triggers estimation of \eqn{\sigma^2_l} (`FALSE`) or  
+#' fixes it (`TRUE`) to a pre-specified  value set by the parameter `variance`.
+#' @param initial initial value of the level (\eqn{l_0}).
+#' 
+#' @details 
+#' \deqn{\begin{cases}l_{t+1} = l_t + \mu_t \\
+#'  \mu_t \sim N(0, \sigma^2 \sigma^2_l)
+#'  \end{cases}
+#' }
 #'
 #' @return
 #' @export
@@ -359,14 +373,21 @@ locallevel<-function(name, variance=.01, fixed=FALSE, initial=NaN){
 }
 
 
-#' Title
+#' Local Linear Trend
 #'
-#' @param name 
-#' @param levelVariance 
-#' @param slopevariance 
-#' @param fixedLevelVariance 
-#' @param fixedSlopeVariance 
-#'
+#' @inheritParams locallevel
+#' @param levelVariance variance of the level (\eqn{\sigma^2_l})
+#' @param slopevariance variance of the slope (\eqn{\sigma^2_n$)
+#' @param fixedLevelVariance,fixedSlopeVariance boolean that triggers 
+#' the estimation of the variances \eqn{\sigma^2_l} and \eqn{\sigma^2_n} (`FALSE`) or  
+#' fixes it (`TRUE`) to a pre-specified value set by the parameters `levelVariance` and `slopevariance`.
+#' @details 
+#' 
+#' \deqn{\begin{cases}l_{t+1} = l_t + n_t +  \xi_t \\
+#'  n_{t+1} = n_t + \mu_t \\
+#'  \xi_t \sim N(0, \sigma^2\sigma^2_l)\\
+#'  \mu_t \sim N(0, \sigma^2\sigma^2_n)
+#'  \end{cases}}
 #' @return
 #' @export
 #'
@@ -633,26 +654,7 @@ ssf<-function(initialization, dynamics, measurement){
   return (rjd3toolkit:::jd3Object(jrslt, SSF, T))
 }
 
-#' Title
-#'
-#' @param name 
-#' @param ar 
-#' @param diff 
-#' @param ma 
-#' @param var 
-#' @param fixed 
-#'
-#' @return
-#' @export
-#'
-#' @examples
-arima<-function(name, ar, diff, ma, var=1, fixed =FALSE){
-  jrslt<-.jcall("jdplus/msts/AtomicModels", "Ljdplus/msts/StateItem;", "arima", name, as.double(ar), as.double(diff), as.double(ma), var, fixed)
-  return (rjd3toolkit:::jd3Object(jrslt, STATEBLOCK))
-}
-
-
-#' Title
+#' Autoregressive Moving Average (ARMA) Model
 #'
 #' @param name 
 #' @param ar 
@@ -671,6 +673,25 @@ arma<-function(name, ar, fixedar=F, ma, fixedma=F, var=1, fixedvar =FALSE){
                 as.double(ma), fixedma, var, fixedvar)
   return (rjd3toolkit:::jd3Object(jrslt, STATEBLOCK))
 }
+
+#' Autoregressive Integrated Moving Average (ARIMA) Model
+#'
+#' @param name 
+#' @param ar 
+#' @param diff 
+#' @param ma 
+#' @param var 
+#' @param fixed 
+#'
+#' @return
+#' @export
+#'
+#' @examples
+arima<-function(name, ar, diff, ma, var=1, fixed =FALSE){
+  jrslt<-.jcall("jdplus/msts/AtomicModels", "Ljdplus/msts/StateItem;", "arima", name, as.double(ar), as.double(diff), as.double(ma), var, fixed)
+  return (rjd3toolkit:::jd3Object(jrslt, STATEBLOCK))
+}
+
 
 #' Title
 #'

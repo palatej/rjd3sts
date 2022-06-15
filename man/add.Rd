@@ -11,9 +11,6 @@ add(model, item)
 
 \item{item}{}
 }
-\value{
-
-}
 \description{
 Title
 }

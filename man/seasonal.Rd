@@ -23,9 +23,6 @@ seasonal(
 
 \item{fixed}{}
 }
-\value{
-
-}
 \description{
 Title
 }

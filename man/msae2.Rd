@@ -19,9 +19,6 @@ msae2(name, vars, fixedvars = F, ar, fixedar = T, lag = 1)
 
 \item{lag}{}
 }
-\value{
-
-}
 \description{
 Title
 }

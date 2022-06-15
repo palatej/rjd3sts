@@ -17,9 +17,6 @@ periodic(name, period, harmonics, variance = 0.01, fixedvariance = FALSE)
 
 \item{fixedvariance}{}
 }
-\value{
-
-}
 \description{
 Title
 }

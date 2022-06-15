@@ -17,11 +17,6 @@ loading(pos = NULL, weights = NULL)
 
 \item{obs}{}
 }
-\value{
-
-
-
-}
 \description{
 Title
 

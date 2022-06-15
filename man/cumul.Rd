@@ -15,9 +15,6 @@ cumul(name, core, period, start = 0)
 
 \item{start}{}
 }
-\value{
-
-}
 \description{
 Title
 }

@@ -21,9 +21,6 @@ msae3(name, vars, fixedvars = F, ar, fixedar = T, k, lag = 1)
 
 \item{lag}{}
 }
-\value{
-
-}
 \description{
 Title
 }

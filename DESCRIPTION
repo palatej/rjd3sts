@@ -18,11 +18,9 @@ SystemRequirements: Java SE 8 or higher
 License: EUPL
 URL: https://github.com/jdemetra/rjd3sa
 LazyData: TRUE
-Suggests:
-    knitr,
-    rmarkdown
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.0
 BugReports: https://github.com/jdemetra/rjdemetra3/issues
+Roxygen: list(markdown = TRUE)
 Encoding: UTF-8
 Collate: 
     'utils.R'

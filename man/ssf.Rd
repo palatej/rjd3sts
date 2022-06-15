@@ -13,9 +13,6 @@ ssf(initialization, dynamics, measurement)
 
 \item{measurement}{}
 }
-\value{
-
-}
 \description{
 Title
 }

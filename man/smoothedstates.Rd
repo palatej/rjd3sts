@@ -9,9 +9,6 @@ smoothedstates(model)
 \arguments{
 \item{rslt}{}
 }
-\value{
-
-}
 \description{
 Title
 }

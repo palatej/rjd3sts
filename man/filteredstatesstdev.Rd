@@ -9,9 +9,6 @@ filteredstatesstdev(rslt)
 \arguments{
 \item{rslt}{}
 }
-\value{
-
-}
 \description{
 Title
 }

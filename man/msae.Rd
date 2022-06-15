@@ -17,9 +17,6 @@ msae(name, nwaves, ar, fixedar = TRUE, lag = 1)
 
 \item{lag}{}
 }
-\value{
-
-}
 \description{
 Title
 }

@@ -56,3 +56,7 @@ sts.outliers(
 \description{
 Title
 }
+\examples{
+ x<-rjd3toolkit::retail$BookStores
+ sts.outliers(x)
+}

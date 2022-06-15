@@ -41,3 +41,7 @@ sts(
 \description{
 Title
 }
+\examples{
+ x<-rjd3toolkit::retail$BookStores
+ sts(x)
+}

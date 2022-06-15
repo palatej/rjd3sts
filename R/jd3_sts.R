@@ -18,6 +18,8 @@ NULL
 #' @export
 #'
 #' @examples
+#'  x<-rjd3toolkit::retail$BookStores
+#'  sts(x)
 sts<-function(y, X=NULL, X.td=NULL, level=1, slope=1, cycle=-1, noise=1
               , seasonal=c("Trigonometric", "Dummy", "Crude", "HarrisonStevens", "Fixed", "Unused"), diffuse.regs=T, tol=1e-9){
   
@@ -31,7 +33,7 @@ sts<-function(y, X=NULL, X.td=NULL, level=1, slope=1, cycle=-1, noise=1
   }
   jts<-rjd3toolkit::ts_r2jd(y)
   jx<-rjd3toolkit::matrix_r2jd(X)
-  jsts<-.jcall("demetra/sts/r/Bsm", "Ldemetra/sts/BasicStructuralModel;", "process", jts, jx,
+  jsts<-.jcall("demetra/sts/r/Bsm", "Ljdplus/sts/BasicStructuralModel;", "process", jts, jx,
               as.integer(level), as.integer(slope), as.integer(cycle), as.integer(noise), seasonal, as.logical(diffuse.regs), tol)
   buffer<-.jcall("demetra/sts/r/Bsm", "[B", "toBuffer", jsts)
   p<-RProtoBuf::read(sts.Bsm, buffer)
@@ -85,11 +87,11 @@ sts.raw<-function(y, period=NA, X=NULL, X.td=NULL, level=1, slope=1, cycle=-1, n
   }
   # create the equation 
   eq<-equation("eq")
-  add(eq, "ll")
-  add(eq, "s")
-  add(eq, "n")
+  add.equation(eq, "ll")
+  add.equation(eq, "s")
+  add.equation(eq, "n")
   if (! is.null(X)){
-    add(eq, "X")
+    add.equation(eq, "X")
   }
   add(bsm, eq)
   #estimate the model

@@ -8,12 +8,12 @@ MODELESTIMATION<-'JD3_SsfModelEstimation'
 MODEL<-'JD3_SsfModel'
 STATEBLOCK<-'JD3_SsfStateBlock'
 
-#' Title
+#' Add Latent variable
 #'
-#' @param equation 
+#' @param equation the equation
 #' @param item 
-#' @param coeff 
-#' @param fixed 
+#' @param coeff the value of the coefficient associated to the block of latent variables defined by `item`.
+#' @param fixed logical that triggers estimation of coeff (FALSE) or fixes it (TRUE) to a pre-specified value
 #' @param loading 
 #'
 #' @return
@@ -146,15 +146,17 @@ add<-function(model, item){
   }
 }
 
-#' Title
+#' Estimate a SSF Model
 #'
-#' @param model 
-#' @param data 
-#' @param marginal 
-#' @param concentrated 
+#' @param model the model
+#' @param data a matrix containing the data (one time series per column, time series dimension on the rows)
+#' @param marginal logical value used to specify whether the marginal likelihood definition is used (TRUE) or 
+#' not (FALSE) during the optimization. The marginal likelihood is recommended when there is at least one variable that loads 
+#' on a non-stationary latent variable and the loading coefficient needs to be estimated.
+#' @param concentrated logical value used to specify whether the likelihood is concentrated (TRUE) or not (FALSE) during the optimization
 #' @param initialization 
 #' @param optimizer 
-#' @param precision 
+#' @param precision indicating the largest likelihood deviations that make the algorithm stop.
 #' @param initialParameters 
 #'
 #' @return
@@ -197,8 +199,6 @@ compute<-function(model, data, parameters, marginal=FALSE, concentrated=TRUE){
 #' 
 #' Functions to create an autoregressive model (`ar`) or a 
 #' modified autoregressive model (`ar2`)
-#' 
-#' 
 #'
 #' @param ar vector of the AR coefficients (\eqn{\varphi_1, \dots, \varphi_p}).
 #' @param fixedar boolean that triggers the estimation of the AR coefficients (`FALSE`)
@@ -295,13 +295,17 @@ sae<-function(name, ar, fixedar=FALSE, lag=1, zeroinit=FALSE){
   return (rjd3toolkit:::jd3Object(jrslt, STATEBLOCK))
 }
 
-#' Title
+#' Modeling errors in surveys with overlapping panels
 #'
-#' @param name 
-#' @param nwaves 
-#' @param ar 
-#' @param fixedar 
-#' @param lag 
+#' @inheritParams locallevel
+#' @param nwaves integer representing the number of waves
+#' @param ar matrix representing the covariance structure of the wave specific survey error.
+#' @param fixedar logical that triggers the estimation of the correlation patterns (`TRUE`) or 
+#' fixes them to the values given by the entries `ar` (`FALSE`)
+#' @param lag integer specifying the number of time periods (in the base frequency) that compose the survey period. 
+#' This coincides with the number of time periods an individual has to wait between two different waves. 
+#' Note that if the survey period is one quarter, all of them have already responded in the previous wave exactly 3 months ago 
+#' (because individuals are always interviewed at the same stint during each survey period).
 #'
 #' @return
 #' @export
@@ -312,38 +316,16 @@ msae<-function(name, nwaves, ar, fixedar=TRUE, lag=1){
   return (rjd3toolkit:::jd3Object(jrslt, STATEBLOCK))
 }
 
-#' Title
-#'
-#' @param name 
-#' @param vars 
-#' @param fixedvars 
-#' @param ar 
-#' @param fixedar 
-#' @param lag 
-#'
-#' @return
+#' @rdname msae
 #' @export
-#'
-#' @examples
 msae2<-function(name, vars, fixedvars=F, ar, fixedar=T, lag=1){
   jrslt<-.jcall("jdplus/msts/AtomicModels", "Ljdplus/msts/StateItem;", "waveSpecificSurveyError", name, vars, fixedvars, rjd3toolkit:::matrix_r2jd(ar), fixedar, as.integer(lag))
   return (rjd3toolkit:::jd3Object(jrslt, STATEBLOCK))
 }
 
-#' Title
-#'
-#' @param name 
-#' @param vars 
-#' @param fixedvars 
-#' @param ar 
-#' @param fixedar 
 #' @param k 
-#' @param lag 
-#'
-#' @return
+#' @rdname msae
 #' @export
-#'
-#' @examples
 msae3<-function(name, vars, fixedvars=F, ar, fixedar=T, k, lag=1){
   jrslt<-.jcall("jdplus/msts/AtomicModels", "Ljdplus/msts/StateItem;", "waveSpecificSurveyError", name, vars, fixedvars, .jarray(ar), fixedar, rjd3toolkit:::matrix_r2jd(k), as.integer(lag))
   return (rjd3toolkit:::jd3Object(jrslt, STATEBLOCK))
@@ -539,8 +521,9 @@ equation<-function(name, variance=0, fixed=T){
 
 #' Title
 #'
-#' @param pos 
-#' @param weights 
+#' @param pos defines the position of each one of the elements of the block of states defined.
+#' `NULL` indicates by default the first state included in the block (pos=0)
+#' @param weights defines the weights associated to each one of the state variables included in the block.
 #'
 #' @return
 #' @export

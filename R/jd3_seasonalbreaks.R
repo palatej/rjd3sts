@@ -19,6 +19,8 @@ NULL
 #' @export
 #'
 #' @examples
+#'  x<-rjd3toolkit::retail$BookStores
+#'  seasonalbreaks(x)
 seasonalbreaks<-function(y, period=NA, level=1, slope=1, noise=1, seasonal=c("HarrisonStevens", "Trigonometric", "Dummy", "Crude", "Fixed", "Unused"),
                        X=NULL,X.td=NULL){
   

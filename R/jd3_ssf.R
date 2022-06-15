@@ -155,7 +155,7 @@ add<-function(model, item){
 #' not (FALSE) during the optimization. The marginal likelihood is recommended when there is at least one variable that loads 
 #' on a non-stationary latent variable and the loading coefficient needs to be estimated.
 #' @param concentrated logical value used to specify whether the likelihood is concentrated (TRUE) or not (FALSE) during the optimization
-#' @param initialization 
+#' @param initialization initialization method.
 #' @param optimizer 
 #' @param precision indicating the largest likelihood deviations that make the algorithm stop.
 #' @param initialParameters 
@@ -739,10 +739,10 @@ aggregation<-function(name, components){
   return (rjd3toolkit::jd3Object(jrslt, STATEBLOCK))
 }
 
-#' Title
+#' Time Varying Regressors
 #'
 #' @param name 
-#' @param x 
+#' @param x matrix containing the regressors
 #' @param var 
 #' @param fixed 
 #'
@@ -760,7 +760,7 @@ reg<-function(name, x, var=NULL, fixed=F){
   return (rjd3toolkit::jd3Object(jrslt, STATEBLOCK))
 }
 
-#' Title
+#' Time Varying Regressor
 #'
 #' @param name 
 #' @param x Regression variable. Numerics 

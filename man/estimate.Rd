@@ -27,7 +27,7 @@ on a non-stationary latent variable and the loading coefficient needs to be esti
 
 \item{concentrated}{logical value used to specify whether the likelihood is concentrated (TRUE) or not (FALSE) during the optimization}
 
-\item{initialization}{}
+\item{initialization}{initialization method.}
 
 \item{optimizer}{}
 

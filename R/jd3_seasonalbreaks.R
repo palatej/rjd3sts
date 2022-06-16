@@ -3,8 +3,8 @@ NULL
 
 #' Title
 #'
-#' @param y 
-#' @param period 
+#' @param y input time series.
+#' @param period annual frequency.
 #' @param level -1 = no level, 0 = fixed level, 1 = sotchastic level
 #' @param slope 
 #' @param noise 

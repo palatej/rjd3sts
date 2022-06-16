@@ -3,14 +3,8 @@ NULL
 
 #' Title
 #'
-#' @param y 
-#' @param X 
-#' @param X.td 
-#' @param level 
-#' @param slope 
+#' @inheritParams seasonalbreaks
 #' @param cycle 
-#' @param noise 
-#' @param seasonal 
 #' @param diffuse.regs 
 #' @param tol 
 #'
@@ -19,7 +13,7 @@ NULL
 #'
 #' @examples
 #'  x<-rjd3toolkit::retail$BookStores
-#'  sts(x)
+#'  #sts(x)
 sts<-function(y, X=NULL, X.td=NULL, level=1, slope=1, cycle=-1, noise=1
               , seasonal=c("Trigonometric", "Dummy", "Crude", "HarrisonStevens", "Fixed", "Unused"), diffuse.regs=T, tol=1e-9){
   
@@ -42,17 +36,7 @@ sts<-function(y, X=NULL, X.td=NULL, level=1, slope=1, cycle=-1, noise=1
 
 #' Title
 #'
-#' @param y 
-#' @param period 
-#' @param X 
-#' @param X.td 
-#' @param level 
-#' @param slope 
-#' @param cycle 
-#' @param noise 
-#' @param seasonal 
-#' @param diffuse.regs 
-#' @param tol 
+#' @inheritParams sts
 #'
 #' @return
 #' @export
@@ -101,7 +85,7 @@ sts.raw<-function(y, period=NA, X=NULL, X.td=NULL, level=1, slope=1, cycle=-1, n
 
 
 
-#' Title
+#' Forecast with STS model
 #'
 #' @param y Series
 #' @param model Model for calendar effects
@@ -112,7 +96,7 @@ sts.raw<-function(y, period=NA, X=NULL, X.td=NULL, level=1, slope=1, cycle=-1, n
 #'   \item{full: }{td3 + easter effect}
 #'   \item{none: }{no calendar effect}
 #'   }
-#' @param nf 
+#' @param nf number of forecasts
 #'
 #' @return
 #' @export

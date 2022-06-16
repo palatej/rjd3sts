@@ -18,13 +18,16 @@ sts(
 )
 }
 \arguments{
-\item{y}{}
+\item{y}{input time series.}
 
-\item{X}{}
+\item{X}{Regression variables (same length as y) or NULL}
 
-\item{X.td}{}
+\item{X.td}{Specification for trading days clustering.
+Contains thr group id fo Mondays... Sundays
+(for instance (1,1,1,1,1,0,0) for week days or (1,1,1,1,1,2,0) for week.saturdays/Sundays variables).
+Contrasts are used. Can be NULL}
 
-\item{level}{}
+\item{level}{-1 = no level, 0 = fixed level, 1 = sotchastic level}
 
 \item{slope}{}
 
@@ -32,7 +35,7 @@ sts(
 
 \item{noise}{}
 
-\item{seasonal}{}
+\item{seasonal}{Seasonal model}
 
 \item{diffuse.regs}{}
 
@@ -43,5 +46,5 @@ Title
 }
 \examples{
  x<-rjd3toolkit::retail$BookStores
- sts(x)
+ #sts(x)
 }

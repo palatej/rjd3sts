@@ -16,9 +16,9 @@ seasonalbreaks(
 )
 }
 \arguments{
-\item{y}{}
+\item{y}{input time series.}
 
-\item{period}{}
+\item{period}{annual frequency.}
 
 \item{level}{-1 = no level, 0 = fixed level, 1 = sotchastic level}
 
@@ -37,4 +37,8 @@ Contrasts are used. Can be NULL}
 }
 \description{
 Title
+}
+\examples{
+ x<-rjd3toolkit::retail$BookStores
+ seasonalbreaks(x)
 }

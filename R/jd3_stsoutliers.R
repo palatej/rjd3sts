@@ -4,17 +4,9 @@ NULL
 
 #' Title
 #'
-#' @param y 
-#' @param period 
-#' @param X 
-#' @param X.td 
-#' @param level 
-#' @param slope 
-#' @param noise 
-#' @param seasonal 
-#' @param ao 
-#' @param ls 
-#' @param so 
+#' @inheritParams seasonalbreaks
+#' @param ao,ls,so boolean indicating if additive outliers (`ao`), level shift (`ls`) and seasonal
+#' outliers (`so`) should be detected.
 #' @param cv 
 #' @param tcv 
 #' @param estimation.forward 

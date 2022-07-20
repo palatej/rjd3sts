@@ -494,7 +494,7 @@ varseasonal<-function(name, period, type=c("Trigonometric", "Crude", "HarrisonSt
   return (rjd3toolkit::jd3Object(jrslt, STATEBLOCK))
 }
 
-#' Title
+#' Create Composite Model
 #'
 #' @return
 #' @export
@@ -505,7 +505,7 @@ model<-function(){
   return (rjd3toolkit::jd3Object(jrslt, MODEL))
 }
 
-#' Title
+#' Create equation
 #'
 #' @param name 
 #' @param variance 
@@ -904,5 +904,24 @@ filteringstates<-function(rslt){
     return(NULL)
   }
   return(rjd3toolkit::result(rslt, "ssf.filtering.states"))
+}
+
+#' Get Parameters of SSF Model
+#'
+#' @param rslt 
+#'
+#' @return
+#' @export
+#'
+#' @examples
+parameters<-function(rslt){
+  if (! is(rslt, MODELESTIMATION))
+    stop("Not a model")
+  if ( is.jnull(rslt$internal) ){
+    return(NULL)
+  }
+  res = rjd3toolkit::result(rslt, "parameters")
+  names(res) <- rjd3toolkit::result(rslt, "parametersnames")
+  return()
 }
 

@@ -2,10 +2,10 @@
 % Please edit documentation in R/jd3_ssf.R
 \name{model}
 \alias{model}
-\title{Title}
+\title{Create Composite Model}
 \usage{
 model()
 }
 \description{
-Title
+Create Composite Model
 }

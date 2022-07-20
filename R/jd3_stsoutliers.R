@@ -4,17 +4,9 @@ NULL
 
 #' Title
 #'
-#' @param y 
-#' @param period 
-#' @param X 
-#' @param X.td 
-#' @param level 
-#' @param slope 
-#' @param noise 
-#' @param seasonal 
-#' @param ao 
-#' @param ls 
-#' @param so 
+#' @inheritParams seasonalbreaks
+#' @param ao,ls,so boolean indicating if additive outliers (`ao`), level shift (`ls`) and seasonal
+#' outliers (`so`) should be detected.
 #' @param cv 
 #' @param tcv 
 #' @param estimation.forward 
@@ -24,6 +16,8 @@ NULL
 #' @export
 #'
 #' @examples
+#'  x<-rjd3toolkit::retail$BookStores
+#'  sts.outliers(x)
 sts.outliers<-function(y, period=NA, X=NULL, X.td=NULL, level=1, slope=1, noise=1, seasonal=c("Trigonometric", "Dummy", "Crude", "HarrisonStevens", "Fixed", "Unused"),
               ao=T, ls=T, so=F, 
               cv=0, tcv=0, estimation.forward=c("Score", "Point", "Full"), 
@@ -46,36 +40,36 @@ sts.outliers<-function(y, period=NA, X=NULL, X.td=NULL, level=1, slope=1, noise=
   
   
   if (! is.null(X.td)){
-    td<-rjd3modelling::td.forTs(y, X.td)
+    td<-rjd3modelling::td(s = y, groups = X.td)
     X<-cbind(X, td)
   }
       
   
   jsts<-.jcall("demetra/sts/r/StsOutliersDetection", "Ldemetra/sts/r/StsOutliersDetection$Results;", "process", data, as.integer(period), 
-              as.integer(level), as.integer(slope), as.integer(noise), seasonal, rjd3toolkit:::matrix_r2jd(X),
+              as.integer(level), as.integer(slope), as.integer(noise), seasonal, rjd3toolkit::matrix_r2jd(X),
               ao, ls, so, cv, tcv, estimation.forward, estimation.backward)
   model<-list(
     y=as.numeric(y),
-    variables=rjd3toolkit:::proc_vector(jsts, "variables"),
-    X=rjd3toolkit:::proc_matrix(jsts, "regressors"),
-    b=rjd3toolkit:::proc_vector(jsts, "b"),
-    bcov=rjd3toolkit:::proc_matrix(jsts, "bvar"),
-    components=rjd3toolkit:::proc_matrix(jsts, "cmps"),
-    linearized=rjd3toolkit:::proc_vector(jsts, "linearized")
+    variables=rjd3toolkit::proc_vector(jsts, "variables"),
+    X=rjd3toolkit::proc_matrix(jsts, "regressors"),
+    b=rjd3toolkit::proc_vector(jsts, "b"),
+    bcov=rjd3toolkit::proc_matrix(jsts, "bvar"),
+    components=rjd3toolkit::proc_matrix(jsts, "cmps"),
+    linearized=rjd3toolkit::proc_vector(jsts, "linearized")
   )
   
-  l0<-rjd3toolkit:::proc_numeric(jsts, "initialbsm.levelvar")
-  s0<-rjd3toolkit:::proc_numeric(jsts, "initialbsm.slopevar")
-  seas0<-rjd3toolkit:::proc_numeric(jsts, "initialbsm.seasvar")
-  n0<-rjd3toolkit:::proc_numeric(jsts, "initialbsm.noisevar")
-  tau0=rjd3toolkit:::proc_matrix(jsts, "initialtau")
+  l0<-rjd3toolkit::proc_numeric(jsts, "initialbsm.levelvar")
+  s0<-rjd3toolkit::proc_numeric(jsts, "initialbsm.slopevar")
+  seas0<-rjd3toolkit::proc_numeric(jsts, "initialbsm.seasvar")
+  n0<-rjd3toolkit::proc_numeric(jsts, "initialbsm.noisevar")
+  tau0=rjd3toolkit::proc_matrix(jsts, "initialtau")
   
   
-  l1<-rjd3toolkit:::proc_numeric(jsts, "finalbsm.levelvar")
-  s1<-rjd3toolkit:::proc_numeric(jsts, "finalbsm.slopevar")
-  seas1<-rjd3toolkit:::proc_numeric(jsts, "finalbsm.seasvar")
-  n1<-rjd3toolkit:::proc_numeric(jsts, "finalbsm.noisevar")
-  tau1=rjd3toolkit:::proc_matrix(jsts, "finaltau")
+  l1<-rjd3toolkit::proc_numeric(jsts, "finalbsm.levelvar")
+  s1<-rjd3toolkit::proc_numeric(jsts, "finalbsm.slopevar")
+  seas1<-rjd3toolkit::proc_numeric(jsts, "finalbsm.seasvar")
+  n1<-rjd3toolkit::proc_numeric(jsts, "finalbsm.noisevar")
+  tau1=rjd3toolkit::proc_matrix(jsts, "finaltau")
   
   ll0<-proc_diffuselikelihood(jsts, "initiallikelihood.")
   ll1<-proc_diffuselikelihood(jsts, "finallikelihood.")

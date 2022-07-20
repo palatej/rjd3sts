@@ -2,24 +2,21 @@
 % Please edit documentation in R/jd3_ssf.R
 \name{add.equation}
 \alias{add.equation}
-\title{Title}
+\title{Add Latent variable}
 \usage{
 add.equation(equation, item, coeff = 1, fixed = TRUE, loading = NULL)
 }
 \arguments{
-\item{equation}{}
+\item{equation}{the equation}
 
 \item{item}{}
 
-\item{coeff}{}
+\item{coeff}{the value of the coefficient associated to the block of latent variables defined by \code{item}.}
 
-\item{fixed}{}
+\item{fixed}{logical that triggers estimation of coeff (FALSE) or fixes it (TRUE) to a pre-specified value}
 
 \item{loading}{}
 }
-\value{
-
-}
 \description{
-Title
+Add Latent variable
 }

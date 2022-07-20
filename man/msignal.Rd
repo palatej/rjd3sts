@@ -15,9 +15,6 @@ msignal(object, m, pos = NULL, stdev = F)
 
 \item{stdev}{}
 }
-\value{
-
-}
 \description{
 Title
 }

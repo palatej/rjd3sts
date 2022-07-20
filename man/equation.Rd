@@ -2,7 +2,7 @@
 % Please edit documentation in R/jd3_ssf.R
 \name{equation}
 \alias{equation}
-\title{Title}
+\title{Create equation}
 \usage{
 equation(name, variance = 0, fixed = T)
 }
@@ -13,9 +13,6 @@ equation(name, variance = 0, fixed = T)
 
 \item{fixed}{}
 }
-\value{
-
-}
 \description{
-Title
+Create equation
 }

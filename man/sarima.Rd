@@ -32,9 +32,6 @@ sarima(
 
 \item{fixedvariance}{}
 }
-\value{
-
-}
 \description{
 Title
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/jd3_ssf.R
 \name{estimate}
 \alias{estimate}
-\title{Title}
+\title{Estimate a SSF Model}
 \usage{
 estimate(
   model,
@@ -17,25 +17,24 @@ estimate(
 )
 }
 \arguments{
-\item{model}{}
+\item{model}{the model}
 
-\item{data}{}
+\item{data}{a matrix containing the data (one time series per column, time series dimension on the rows)}
 
-\item{marginal}{}
+\item{marginal}{logical value used to specify whether the marginal likelihood definition is used (TRUE) or
+not (FALSE) during the optimization. The marginal likelihood is recommended when there is at least one variable that loads
+on a non-stationary latent variable and the loading coefficient needs to be estimated.}
 
-\item{concentrated}{}
+\item{concentrated}{logical value used to specify whether the likelihood is concentrated (TRUE) or not (FALSE) during the optimization}
 
-\item{initialization}{}
+\item{initialization}{initialization method.}
 
 \item{optimizer}{}
 
-\item{precision}{}
+\item{precision}{indicating the largest likelihood deviations that make the algorithm stop.}
 
 \item{initialParameters}{}
 }
-\value{
-
-}
 \description{
-Title
+Estimate a SSF Model
 }

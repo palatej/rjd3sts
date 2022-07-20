@@ -26,9 +26,6 @@ varseasonal(
 
 \item{fixed}{}
 }
-\value{
-
-}
 \description{
 Title
 }

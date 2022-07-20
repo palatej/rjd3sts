@@ -18,13 +18,16 @@ sts(
 )
 }
 \arguments{
-\item{y}{}
+\item{y}{input time series.}
 
-\item{X}{}
+\item{X}{Regression variables (same length as y) or NULL}
 
-\item{X.td}{}
+\item{X.td}{Groups of days for trading days regressors. The length of the array must be 7.
+It indicates to what group each week day belongs.
+The first item corresponds to Mondays and the last one to Sundays. The group used for contrasts (usually Sundays) is identified by 0. The other groups are identified by 1, 2,... n (<= 6).
+For instance, usual trading days are defined by \code{c(1,2,3,4,5,6,0)}, week days by \code{c(1,1,1,1,1,0,0)}, etc...}
 
-\item{level}{}
+\item{level}{-1 = no level, 0 = fixed level, 1 = sotchastic level}
 
 \item{slope}{}
 
@@ -32,15 +35,16 @@ sts(
 
 \item{noise}{}
 
-\item{seasonal}{}
+\item{seasonal}{Seasonal model}
 
 \item{diffuse.regs}{}
 
 \item{tol}{}
 }
-\value{
-
-}
 \description{
 Title
+}
+\examples{
+ x<-rjd3toolkit::retail$BookStores
+ #sts(x)
 }

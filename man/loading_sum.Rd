@@ -9,9 +9,6 @@ loading_sum(length = 0)
 \arguments{
 \item{length}{}
 }
-\value{
-
-}
 \description{
 Title
 }

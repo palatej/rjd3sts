@@ -17,9 +17,6 @@ varlocallevel(name, std, scale = 1, fixed = FALSE, initial = NaN)
 
 \item{initial}{}
 }
-\value{
-
-}
 \description{
 Title
 }

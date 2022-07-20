@@ -2,7 +2,7 @@
 % Please edit documentation in R/jd3_ssf.R
 \name{varreg}
 \alias{varreg}
-\title{Title}
+\title{Time Varying Regressor}
 \usage{
 varreg(name, x, stderr, scale = 1, fixed = F)
 }
@@ -17,11 +17,8 @@ varreg(name, x, stderr, scale = 1, fixed = F)
 
 \item{fixed}{Fixed scaling factor}
 }
-\value{
-
-}
 \description{
-Title
+Time Varying Regressor
 }
 \examples{
  x<-rjd3toolkit::retail$BookStores

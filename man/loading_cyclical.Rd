@@ -11,9 +11,6 @@ loading_cyclical(period, startpos)
 
 \item{startpos}{}
 }
-\value{
-
-}
 \description{
 Title
 }

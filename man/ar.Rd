@@ -2,7 +2,8 @@
 % Please edit documentation in R/jd3_ssf.R
 \name{ar}
 \alias{ar}
-\title{Title}
+\alias{ar2}
+\title{Autoregressive model}
 \usage{
 ar(
   name,
@@ -13,25 +14,45 @@ ar(
   nlags = 0,
   zeroinit = FALSE
 )
+
+ar2(
+  name,
+  ar,
+  fixedar = FALSE,
+  variance = 0.01,
+  fixedvariance = FALSE,
+  nlags = 0,
+  nfcasts = 0
+)
 }
 \arguments{
-\item{name}{}
+\item{ar}{vector of the AR coefficients (\eqn{\varphi_1, \dots, \varphi_p}).}
 
-\item{ar}{}
+\item{fixedar}{boolean that triggers the estimation of the AR coefficients (\code{FALSE})
+or fixed it (\code{TRUE}) to a pre-specified value set by the parameter \code{ar}.}
 
-\item{fixedar}{}
+\item{variance}{the variance (\eqn{\sigma^2_{ar}}).}
 
-\item{variance}{}
+\item{fixedvariance}{boolean that triggers the estimation of the variance (\code{FALSE})
+or fixed it (\code{TRUE}) to a pre-specified value set by the parameter \code{variance}.}
 
-\item{fixedvariance}{}
+\item{nlags}{integer specifying how many lags of the state variable are needed}
 
-\item{nlags}{}
+\item{zeroinit}{boolean determining the initial condition for the state variable,
+which is equal to zero if \code{zeroinit = TRUE}.
+The default (\code{zeroinit = FAKSE}) triggers the an initialization based on the
+unconditional mean and variance of the AR(p) process.}
 
-\item{zeroinit}{}
-}
-\value{
-
+\item{nfcasts}{integer specifying how many forecasts of the state variable are needed}
 }
 \description{
-Title
+Functions to create an autoregressive model (\code{ar}) or a
+modified autoregressive model (\code{ar2})
+}
+\details{
+The AR process is defined by
+\deqn{\Phi\left(B\right)y_t=\epsilon_t}
+where
+\deqn{\Phi\left(B\right)=1+\varphi_1 B + \cdots + \varphi_p B^p}
+is an auto-regressive polynomial.
 }

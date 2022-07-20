@@ -3,14 +3,8 @@ NULL
 
 #' Title
 #'
-#' @param y 
-#' @param X 
-#' @param X.td 
-#' @param level 
-#' @param slope 
+#' @inheritParams seasonalbreaks
 #' @param cycle 
-#' @param noise 
-#' @param seasonal 
 #' @param diffuse.regs 
 #' @param tol 
 #'
@@ -18,6 +12,8 @@ NULL
 #' @export
 #'
 #' @examples
+#'  x<-rjd3toolkit::retail$BookStores
+#'  #sts(x)
 sts<-function(y, X=NULL, X.td=NULL, level=1, slope=1, cycle=-1, noise=1
               , seasonal=c("Trigonometric", "Dummy", "Crude", "HarrisonStevens", "Fixed", "Unused"), diffuse.regs=T, tol=1e-9){
   
@@ -26,12 +22,12 @@ sts<-function(y, X=NULL, X.td=NULL, level=1, slope=1, cycle=-1, noise=1
   }
   seasonal<-match.arg(seasonal)
   if (! is.null(X.td)){
-    td<-rjd3modelling::td.forTs(y, X.td)
+    td<-rjd3modelling::td(s = y, groups = X.td)
     X<-cbind(X, td)
   }
-  jts<-rjd3toolkit:::ts_r2jd(y)
-  jx<-rjd3toolkit:::matrix_r2jd(X)
-  jsts<-.jcall("demetra/sts/r/Bsm", "Ldemetra/sts/BasicStructuralModel;", "process", jts, jx,
+  jts<-rjd3toolkit::ts_r2jd(y)
+  jx<-rjd3toolkit::matrix_r2jd(X)
+  jsts<-.jcall("demetra/sts/r/Bsm", "Ljdplus/sts/BasicStructuralModel;", "process", jts, jx,
               as.integer(level), as.integer(slope), as.integer(cycle), as.integer(noise), seasonal, as.logical(diffuse.regs), tol)
   buffer<-.jcall("demetra/sts/r/Bsm", "[B", "toBuffer", jsts)
   p<-RProtoBuf::read(sts.Bsm, buffer)
@@ -40,17 +36,7 @@ sts<-function(y, X=NULL, X.td=NULL, level=1, slope=1, cycle=-1, noise=1
 
 #' Title
 #'
-#' @param y 
-#' @param period 
-#' @param X 
-#' @param X.td 
-#' @param level 
-#' @param slope 
-#' @param cycle 
-#' @param noise 
-#' @param seasonal 
-#' @param diffuse.regs 
-#' @param tol 
+#' @inheritParams sts
 #'
 #' @return
 #' @export
@@ -72,7 +58,7 @@ sts.raw<-function(y, period=NA, X=NULL, X.td=NULL, level=1, slope=1, cycle=-1, n
   }
   seasonal<-match.arg(seasonal)
   if (! is.null(X.td)){
-    td<-rjd3modelling::td.forTs(y, X.td)
+    td<-rjd3modelling::td(s = y, groups = X.td)
     X<-cbind(X, td)
   }
   bsm<-model()
@@ -85,11 +71,11 @@ sts.raw<-function(y, period=NA, X=NULL, X.td=NULL, level=1, slope=1, cycle=-1, n
   }
   # create the equation 
   eq<-equation("eq")
-  add(eq, "ll")
-  add(eq, "s")
-  add(eq, "n")
+  add.equation(eq, "ll")
+  add.equation(eq, "s")
+  add.equation(eq, "n")
   if (! is.null(X)){
-    add(eq, "X")
+    add.equation(eq, "X")
   }
   add(bsm, eq)
   #estimate the model
@@ -99,7 +85,7 @@ sts.raw<-function(y, period=NA, X=NULL, X.td=NULL, level=1, slope=1, cycle=-1, n
 
 
 
-#' Title
+#' Forecast with STS model
 #'
 #' @param y Series
 #' @param model Model for calendar effects
@@ -110,7 +96,7 @@ sts.raw<-function(y, period=NA, X=NULL, X.td=NULL, level=1, slope=1, cycle=-1, n
 #'   \item{full: }{td3 + easter effect}
 #'   \item{none: }{no calendar effect}
 #'   }
-#' @param nf 
+#' @param nf number of forecasts
 #'
 #' @return
 #' @export
@@ -121,8 +107,8 @@ sts.forecast<-function(y, model=c("none", "td2", "td3", "td7", "full"), nf=12){
   if (!is.ts(y)){
     stop("y must be a time series")
   }
-  jf<-.jcall("demetra/sts/r/Bsm", "Ldemetra/math/matrices/Matrix;", "forecast", rjd3toolkit:::ts_r2jd(y), model, as.integer((nf)))
-  return (rjd3toolkit:::matrix_jd2r(jf))
+  jf<-.jcall("demetra/sts/r/Bsm", "Ldemetra/math/matrices/Matrix;", "forecast", rjd3toolkit::ts_r2jd(y), model, as.integer((nf)))
+  return (rjd3toolkit::matrix_jd2r(jf))
   
 }
 
@@ -139,10 +125,10 @@ p2r_sts_rslts<-function(p){
 p2r_sts_estimation<-function(p){
   return (list(
     y=p$y,
-    X=rjd3toolkit:::p2r_matrix(p$x),
-    parameters=rjd3toolkit:::p2r_parameters_estimation(p$parameters),
+    X=rjd3toolkit::p2r_matrix(p$x),
+    parameters=rjd3toolkit::p2r_parameters_estimation(p$parameters),
     b=p$b,
-    bvar=rjd3toolkit:::p2r_matrix(p$bcovariance),
+    bvar=rjd3toolkit::p2r_matrix(p$bcovariance),
     likelihood=p2r_diffuselikelihood(p$likelihood),
     res=p$residuals))
 }
@@ -150,9 +136,9 @@ p2r_sts_estimation<-function(p){
 p2r_sts_description<-function(p){
   return (list(
     log=p$log,
-    preadjustment = rjd3toolkit:::enum_extract(modelling.LengthOfPeriod, p$preadjustment),
+    preadjustment = rjd3toolkit::enum_extract(modelling.LengthOfPeriod, p$preadjustment),
     bsm=p2r_spec_bsm(p$bsm),
-    variables=rjd3modelling:::p2r_variables(p$variables)))
+    variables=rjd3modelling::p2r_variables(p$variables)))
 }
 
 p2r_sts_components<-function(p){
@@ -174,14 +160,14 @@ p2r_sts_component<-function(p){
 
 p2r_spec_bsm<-function(p){
   return (list(
-    level=rjd3toolkit:::p2r_parameter(p$level),
-    slope=rjd3toolkit:::p2r_parameter(p$slope),
-    seas=rjd3toolkit:::p2r_parameter(p$seas),
-    seasmodel=rjd3toolkit:::enum_extract(sts.SeasonalModel, p$seasonal_model),
-    noise=rjd3toolkit:::p2r_parameter(p$noise),
-    cycle=rjd3toolkit:::p2r_parameter(p$cycle),
-    cyclelength=rjd3toolkit:::p2r_parameter(p$cycle_period),
-    cyclefactor=rjd3toolkit:::p2r_parameter(p$cycle_factor)
+    level=rjd3toolkit::p2r_parameter(p$level),
+    slope=rjd3toolkit::p2r_parameter(p$slope),
+    seas=rjd3toolkit::p2r_parameter(p$seas),
+    seasmodel=rjd3toolkit::enum_extract(sts.SeasonalModel, p$seasonal_model),
+    noise=rjd3toolkit::p2r_parameter(p$noise),
+    cycle=rjd3toolkit::p2r_parameter(p$cycle),
+    cyclelength=rjd3toolkit::p2r_parameter(p$cycle_period),
+    cyclefactor=rjd3toolkit::p2r_parameter(p$cycle_factor)
   ))
   
 }

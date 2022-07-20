@@ -2,22 +2,19 @@
 % Please edit documentation in R/jd3_ssf.R
 \name{reg}
 \alias{reg}
-\title{Title}
+\title{Time Varying Regressors}
 \usage{
 reg(name, x, var = NULL, fixed = F)
 }
 \arguments{
 \item{name}{}
 
-\item{x}{}
+\item{x}{matrix containing the regressors}
 
 \item{var}{}
 
 \item{fixed}{}
 }
-\value{
-
-}
 \description{
-Title
+Time Varying Regressors
 }

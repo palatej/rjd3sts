@@ -11,9 +11,6 @@ varloading(pos, weights)
 
 \item{weights}{}
 }
-\value{
-
-}
 \description{
 Title
 }

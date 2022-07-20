@@ -2,7 +2,7 @@
 % Please edit documentation in R/jd3_ssf.R
 \name{arima}
 \alias{arima}
-\title{Title}
+\title{Autoregressive Integrated Moving Average (ARIMA) Model}
 \usage{
 arima(name, ar, diff, ma, var = 1, fixed = FALSE)
 }
@@ -19,9 +19,6 @@ arima(name, ar, diff, ma, var = 1, fixed = FALSE)
 
 \item{fixed}{}
 }
-\value{
-
-}
 \description{
-Title
+Autoregressive Integrated Moving Average (ARIMA) Model
 }

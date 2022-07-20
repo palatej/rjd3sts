@@ -26,9 +26,6 @@ cycle(
 
 \item{fixedvariance}{}
 }
-\value{
-
-}
 \description{
 Title
 }

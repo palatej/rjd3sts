@@ -1,4 +1,5 @@
 #' @include utils.R
+#' @import rjd3sa
 NULL
 
 .onLoad <- function(libname, pkgname) {

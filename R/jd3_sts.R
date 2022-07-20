@@ -22,7 +22,7 @@ sts<-function(y, X=NULL, X.td=NULL, level=1, slope=1, cycle=-1, noise=1
   }
   seasonal<-match.arg(seasonal)
   if (! is.null(X.td)){
-    td<-rjd3modelling::td.forTs(y, X.td)
+    td<-rjd3modelling::td(s = y, groups = X.td)
     X<-cbind(X, td)
   }
   jts<-rjd3toolkit::ts_r2jd(y)
@@ -58,7 +58,7 @@ sts.raw<-function(y, period=NA, X=NULL, X.td=NULL, level=1, slope=1, cycle=-1, n
   }
   seasonal<-match.arg(seasonal)
   if (! is.null(X.td)){
-    td<-rjd3modelling::td.forTs(y, X.td)
+    td<-rjd3modelling::td(s = y, groups = X.td)
     X<-cbind(X, td)
   }
   bsm<-model()

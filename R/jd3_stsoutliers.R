@@ -40,7 +40,7 @@ sts.outliers<-function(y, period=NA, X=NULL, X.td=NULL, level=1, slope=1, noise=
   
   
   if (! is.null(X.td)){
-    td<-rjd3modelling::td.forTs(y, X.td)
+    td<-rjd3modelling::td(s = y, groups = X.td)
     X<-cbind(X, td)
   }
       

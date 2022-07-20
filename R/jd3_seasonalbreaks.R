@@ -36,7 +36,7 @@ seasonalbreaks<-function(y, period=NA, level=1, slope=1, noise=1, seasonal=c("Ha
   }
   seasonal<-match.arg(seasonal)
   if (! is.null(X.td)){
-    td<-rjd3modelling::td.forTs(y, X.td)
+    td<-rjd3modelling::td(s = y, groups = X.td)
     X<-cbind(X, td)
   }
 

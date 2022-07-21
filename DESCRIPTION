@@ -15,7 +15,7 @@ Imports:
   rjd3modelling (>= 0.3.2),
   rjd3sa (>= 0.3.2),
   methods
-SystemRequirements: Java SE 8 or higher
+SystemRequirements: Java JRE 17 or higher
 License: EUPL
 URL: https://github.com/jdemetra/rjd3sa
 LazyData: TRUE

@@ -5,7 +5,6 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="rjd3sts">
 <title>Sructural Time Series using JDemetra+ • rjd3sts</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
@@ -15,64 +14,48 @@
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js" integrity="sha512-7O5pXpc0oCRrxk8RUfDYFgn0nO1t+jLuIOQdOMRp4APB7uZ4vSjspzp5y6YDtDs4VzUSTbWzBFZ/LKJhnyFOKw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Sructural Time Series using JDemetra+">
-<meta property="og:description" content="rjd3sts">
-<meta property="og:image" content="https://rjdverse.github.io/rjd3sts/logo.svg">
-<!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
+<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Sructural Time Series using JDemetra+">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
-    
 
-    <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light" data-bs-theme="light"><div class="container">
-    
+
+    <nav class="navbar navbar-expand-lg fixed-top bg-light" data-bs-theme="light" aria-label="Site navigation"><div class="container">
+
     <a class="navbar-brand me-2" href="../index.html">rjd3sts</a>
 
     <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">2.1.1</small>
 
-    
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
-<li class="nav-item">
-  <a class="nav-link" href="../reference/index.html">Reference</a>
-</li>
+<li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="active nav-item dropdown">
-  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
-  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/bsm.html">BSM</a>
-    <a class="dropdown-item" href="../articles/regsplines.html">Regular periodic cubic splines</a>
-    <a class="dropdown-item" href="../articles/sts.html">Sructural Time Series using JDemetra+</a>
-    <a class="dropdown-item" href="../articles/tdvar.html">Time varying trading days</a>
-  </div>
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
+<li><a class="dropdown-item" href="../articles/bsm.html">BSM</a></li>
+    <li><a class="dropdown-item" href="../articles/regsplines.html">Regular periodic cubic splines</a></li>
+    <li><a class="dropdown-item" href="../articles/sts.html">Sructural Time Series using JDemetra+</a></li>
+    <li><a class="dropdown-item" href="../articles/tdvar.html">Time varying trading days</a></li>
+  </ul>
 </li>
-<li class="nav-item">
-  <a class="nav-link" href="../news/index.html">Changelog</a>
-</li>
+<li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul>
-<form class="form-inline my-2 my-lg-0" role="search">
-        <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off">
-</form>
-
-      <ul class="navbar-nav">
-<li class="nav-item">
-  <a class="external-link nav-link" href="https://github.com/rjdverse/rjd3sts/" aria-label="github">
-    <span class="fab fa fab fa-github fa-lg"></span>
-     
-  </a>
-</li>
+<ul class="navbar-nav">
+<li class="nav-item"><form class="form-inline" role="search">
+ <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json">
+</form></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/rjdverse/rjd3sts/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul>
 </div>
 
-    
+
   </div>
 </nav><div class="container template-article">
 
@@ -85,9 +68,9 @@
                         <h4 data-toc-skip class="author">Jean
 Palate</h4>
             
-            <h4 data-toc-skip class="date">2024-07-05</h4>
+            <h4 data-toc-skip class="date">2024-07-08</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/rjdverse/rjd3sts/blob/HEAD/vignettes/sts.Rmd" class="external-link"><code>vignettes/sts.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/rjdverse/rjd3sts/blob/develop/vignettes/sts.Rmd" class="external-link"><code>vignettes/sts.Rmd</code></a></small>
       <div class="d-none name"><code>sts.Rmd</code></div>
     </div>
 
@@ -122,70 +105,242 @@ Australian retail trade.</li>
 <div class="section level4">
 <h4 id="introduction-1">Introduction<a class="anchor" aria-label="anchor" href="#introduction-1"></a>
 </h4>
-<p>The AR process is defined by</p>
-<p><span class="math display">\[\Phi\left(B\right)y_t=\epsilon_t
-\]</span></p>
+<p>The auto-regressive block is defined by</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Φ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>B</mi><mo stretchy="true" form="postfix">)</mo></mrow><msub><mi>y</mi><mi>t</mi></msub><mo>=</mo><msub><mi>ϵ</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">\Phi\left(B\right)y_t=\epsilon_t </annotation></semantics></math></p>
 <p>where:</p>
-<p><span class="math display">\[\Phi\left(B\right)=1+\varphi_1 B +
-\cdots + \varphi_p B^p \]</span></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Φ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>B</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>1</mn><mo>+</mo><msub><mi>φ</mi><mn>1</mn></msub><mi>B</mi><mo>+</mo><mi>⋯</mi><mo>+</mo><msub><mi>φ</mi><mi>p</mi></msub><msup><mi>B</mi><mi>p</mi></msup></mrow><annotation encoding="application/x-tex">\Phi\left(B\right)=1+\varphi_1 B + \cdots + \varphi_p B^p </annotation></semantics></math></p>
 <p>is an auto-regressive polynomial.</p>
-<p>Let <span class="math inline">\(\gamma_i\)</span> be the
-autocovariances of the model.</p>
-<p>Using those notations, the state-space model can be written as
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>γ</mi><mi>i</mi></msub><annotation encoding="application/x-tex">\gamma_i</annotation></semantics></math>
+be the autocovariances of the process</p>
+<p>Using those notations, the state-space block can be written as
 follows :</p>
 </div>
 <div class="section level4">
 <h4 id="state-block">State block:<a class="anchor" aria-label="anchor" href="#state-block"></a>
 </h4>
-<p><span class="math display">\[ \alpha_t= \begin{pmatrix} y_t \\
-y_{t-1} \\ \vdots \\ y_{t-p+1} \end{pmatrix}\]</span><br>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>α</mi><mi>t</mi></msub><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>y</mi><mi>t</mi></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>y</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>y</mi><mrow><mi>t</mi><mo>−</mo><mi>p</mi><mo>+</mo><mn>1</mn></mrow></msub></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex"> \alpha_t= \begin{pmatrix} y_t \\ y_{t-1} \\ \vdots \\ y_{t-p+1} \end{pmatrix}</annotation></semantics></math><br>
 The state block can be extended with additional lags. That can be useful
 in complex (multi-variate) models</p>
 </div>
 <div class="section level4">
 <h4 id="dynamics">Dynamics<a class="anchor" aria-label="anchor" href="#dynamics"></a>
 </h4>
-<p><span class="math display">\[ T_t = \begin{pmatrix}-\varphi_1 &amp;
-\cdots &amp; \cdots  &amp; -\varphi_p  \\
-                        1          &amp; \cdots &amp;  \cdots
-&amp;  0          \\
-                        \vdots     &amp; \ddots &amp;  \ddots &amp;
-\vdots\\
-                        0          &amp;   0    &amp;  1      &amp;
-0  \end{pmatrix}\]</span></p>
-<p><span class="math display">\[ S_t = \sigma_{ar} \begin{pmatrix} 1 \\
-0 \\ \vdots\\ 0 \end{pmatrix} \]</span></p>
-<p><span class="math display">\[ V_t = S S' \]</span></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>T</mi><mi>t</mi></msub><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mo>−</mo><msub><mi>φ</mi><mn>1</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><mi>⋯</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>⋯</mi></mtd><mtd columnalign="center" style="text-align: center"><mo>−</mo><msub><mi>φ</mi><mi>p</mi></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>⋯</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>⋯</mi></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd><mtd columnalign="center" style="text-align: center"><mo>⋱</mo></mtd><mtd columnalign="center" style="text-align: center"><mo>⋱</mo></mtd><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex"> T_t = \begin{pmatrix}-\varphi_1 &amp; \cdots &amp; \cdots  &amp; -\varphi_p  \\
+                        1          &amp; \cdots &amp;  \cdots &amp;  0          \\ 
+                        \vdots     &amp; \ddots &amp;  \ddots &amp; \vdots\\ 
+                        0          &amp;   0    &amp;  1      &amp; 0  \end{pmatrix}</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mi>t</mi></msub><mo>=</mo><msub><mi>σ</mi><mrow><mi>a</mi><mi>r</mi></mrow></msub><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex"> S_t = \sigma_{ar} \begin{pmatrix} 1 \\ 0 \\ \vdots\\ 0 \end{pmatrix} </annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mi>t</mi></msub><mo>=</mo><mi>S</mi><mi>S</mi><mi>′</mi></mrow><annotation encoding="application/x-tex"> V_t = S S' </annotation></semantics></math></p>
 </div>
 <div class="section level4">
-<h4 id="measurement">Measurement<a class="anchor" aria-label="anchor" href="#measurement"></a>
+<h4 id="default-loading">Default loading<a class="anchor" aria-label="anchor" href="#default-loading"></a>
 </h4>
-<p><span class="math display">\[ Z_t = \begin{pmatrix} 1 &amp; 0 &amp;
-\cdots &amp; 0\end{pmatrix}\]</span></p>
-<p><span class="math display">\[ h_t = 0 \]</span></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Z</mi><mi>t</mi></msub><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>⋯</mi></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex"> Z_t = \begin{pmatrix} 1 &amp; 0 &amp; \cdots &amp; 0\end{pmatrix}</annotation></semantics></math></p>
 </div>
 <div class="section level4">
 <h4 id="initialization">Initialization<a class="anchor" aria-label="anchor" href="#initialization"></a>
 </h4>
-<p><span class="math display">\[ \alpha_{-1} = \begin{pmatrix}0 \\ 0 \\
-\vdots\\ 0 \end{pmatrix} \]</span></p>
-<p><span class="math display">\[ P_{*} = \Omega \]</span> <span class="math inline">\(\Omega\)</span> is the unconditional covariance of
-the state array; it can be easily derived using the MA representation.
-We have:</p>
-<p><span class="math display">\[ \Omega\left(i,0\right) = \gamma_i
-\]</span></p>
-<p><span class="math display">\[ \Omega\left(i,j\right) =
-\Omega\left(i-1,j-1\right)-\psi_i \psi_j \]</span></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>α</mi><mrow><mo>−</mo><mn>1</mn></mrow></msub><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex"> \alpha_{-1} = \begin{pmatrix}0 \\ 0 \\ \vdots\\ 0 \end{pmatrix} </annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mo>*</mo></msub><mo>=</mo><mi>Ω</mi></mrow><annotation encoding="application/x-tex"> P_{*} = \Omega </annotation></semantics></math><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Ω</mi><annotation encoding="application/x-tex">\Omega</annotation></semantics></math>
+is the unconditional covariance of the state array; it can be easily
+derived using the MA representation. We have:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Ω</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>i</mi><mo>,</mo><mn>0</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msub><mi>γ</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex"> \Omega\left(i,0\right) = \gamma_i </annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Ω</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>i</mi><mo>,</mo><mi>j</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>Ω</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo>,</mo><mi>j</mi><mo>−</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><msub><mi>ψ</mi><mi>i</mi></msub><msub><mi>ψ</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex"> \Omega\left(i,j\right) = \Omega\left(i-1,j-1\right)-\psi_i \psi_j </annotation></semantics></math></p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">b_ar</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/ar.html">ar</a></span><span class="op">(</span><span class="st">"ar"</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">.2</span>, <span class="fl">.4</span>, <span class="op">-</span><span class="fl">.05</span><span class="op">)</span>, nlags<span class="op">=</span><span class="fl">5</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">b_ar</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/ar.html">ar</a></span><span class="op">(</span><span class="st">"ar"</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">.2</span>, <span class="fl">.4</span>, <span class="op">-</span><span class="fl">.1</span><span class="op">)</span>, nlags<span class="op">=</span><span class="fl">5</span><span class="op">)</span></span>
 <span><span class="fu">knit_print</span><span class="op">(</span><span class="fu"><a href="../reference/block_t.html">block_t</a></span><span class="op">(</span><span class="va">b_ar</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt;      [,1] [,2]  [,3] [,4] [,5]</span></span>
-<span><span class="co">#&gt; [1,] -0.2  0.4 -0.05    0    0</span></span>
-<span><span class="co">#&gt; [2,]  1.0  0.0  0.00    0    0</span></span>
-<span><span class="co">#&gt; [3,]  0.0  1.0  0.00    0    0</span></span>
-<span><span class="co">#&gt; [4,]  0.0  0.0  1.00    0    0</span></span>
-<span><span class="co">#&gt; [5,]  0.0  0.0  0.00    1    0</span></span></code></pre></div>
+<span><span class="co">#&gt;      [,1] [,2] [,3] [,4] [,5]</span></span>
+<span><span class="co">#&gt; [1,] -0.2  0.4 -0.1    0    0</span></span>
+<span><span class="co">#&gt; [2,]  1.0  0.0  0.0    0    0</span></span>
+<span><span class="co">#&gt; [3,]  0.0  1.0  0.0    0    0</span></span>
+<span><span class="co">#&gt; [4,]  0.0  0.0  1.0    0    0</span></span>
+<span><span class="co">#&gt; [5,]  0.0  0.0  0.0    1    0</span></span></code></pre></div>
 </div>
+</div>
+<div class="section level3">
+<h3 id="ar2">ar2<a class="anchor" aria-label="anchor" href="#ar2"></a>
+</h3>
+<div class="section level4">
+<h4 id="introduction-2">Introduction<a class="anchor" aria-label="anchor" href="#introduction-2"></a>
+</h4>
+<p>An alternative representation of the auto-regressive block will be
+very useful for the purposes of reflecting expectations. The process is
+defined as above:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Φ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>B</mi><mo stretchy="true" form="postfix">)</mo></mrow><msub><mi>y</mi><mi>t</mi></msub><mo>=</mo><msub><mi>ϵ</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">\Phi\left(B\right)y_t=\epsilon_t </annotation></semantics></math></p>
+<p>where:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Φ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>B</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>1</mn><mo>+</mo><msub><mi>φ</mi><mn>1</mn></msub><mi>B</mi><mo>+</mo><mi>⋯</mi><mo>+</mo><msub><mi>φ</mi><mi>p</mi></msub><msup><mi>B</mi><mi>p</mi></msup></mrow><annotation encoding="application/x-tex">\Phi\left(B\right)=1+\varphi_1 B + \cdots + \varphi_p B^p </annotation></semantics></math></p>
+<p>is an auto-regressive polynomial. However, modeling data that refers
+to expectations may require including conditional expectations in the
+state vector. Thus, the same type of representation that is used for the
+ARMA model will be considered here.</p>
+<p>Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>γ</mi><mi>i</mi></msub><annotation encoding="application/x-tex">\gamma_i</annotation></semantics></math>
+be the autocovariances of the model. We also define the size of our
+state vector as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mn>0</mn><mo>=</mo><mi>m</mi><mi>a</mi><mi>x</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>p</mi><mo>,</mo><mi>h</mi><mo>+</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">r0=max(p,h+1)</annotation></semantics></math>,
+where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>h</mi><annotation encoding="application/x-tex">h</annotation></semantics></math>
+is the forecast horizon desired by the user. If the user needs to use
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mi>l</mi><mi>a</mi><mi>g</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">nlags</annotation></semantics></math>
+lagged values, whose default value is zero. Then the size of the state
+vector will be
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>=</mo><mi>r</mi><mn>0</mn><mo>+</mo><mi>n</mi><mi>l</mi><mi>a</mi><mi>g</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">r=r0+nlags</annotation></semantics></math></p>
+<p>Using those notations, the state-space model can be written as
+follows :</p>
+</div>
+<div class="section level4">
+<h4 id="state-block-1">State block:<a class="anchor" aria-label="anchor" href="#state-block-1"></a>
+</h4>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>α</mi><mi>t</mi></msub><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>y</mi><mrow><mi>t</mi><mo>−</mo><mi>n</mi><mi>l</mi><mi>a</mi><mi>g</mi><mi>s</mi></mrow></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>y</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>y</mi><mi>t</mi></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>y</mi><mrow><mi>t</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="prefix">|</mo><mi>t</mi></mrow></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>y</mi><mrow><mi>t</mi><mo>+</mo><mi>h</mi><mo stretchy="false" form="prefix">|</mo><mi>t</mi></mrow></msub></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex"> \alpha_t= \begin{pmatrix} 
+y_{t-nlags} \\ 
+\vdots  \\ 
+y_{t-1}  \\ 
+\hline
+y_{t}  \\ 
+y_{t+1|t} \\ 
+\vdots \\ 
+y_{t+h|t} 
+\end{pmatrix}</annotation></semantics></math></p>
+<p>where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>y</mi><mrow><mi>t</mi><mo>+</mo><mi>i</mi><mo stretchy="false" form="prefix">|</mo><mi>t</mi></mrow></msub><annotation encoding="application/x-tex">y_{t+i|t}</annotation></semantics></math>
+is the orthogonal projection of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>y</mi><mrow><mi>t</mi><mo>+</mo><mi>i</mi></mrow></msub><annotation encoding="application/x-tex">y_{t+i}</annotation></semantics></math>
+on the subspace generated by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>:</mo><mi>s</mi><mo>≤</mo><mi>t</mi></mrow><annotation encoding="application/x-tex">{y\left(s\right):s \leq t}</annotation></semantics></math>.
+Thus, it is the forecast function with respect to the semi-infinite
+sample. We also have that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>y</mi><mrow><mi>t</mi><mo>+</mo><mi>i</mi><mo stretchy="false" form="prefix">|</mo><mi>t</mi></mrow></msub><mo>=</mo><msubsup><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mi>i</mi></mrow><mi>∞</mi></msubsup><mrow><msub><mi>ψ</mi><mi>j</mi></msub><msub><mi>ϵ</mi><mrow><mi>t</mi><mo>+</mo><mi>i</mi><mo>−</mo><mi>j</mi></mrow></msub></mrow></mrow><annotation encoding="application/x-tex">y_{t+i|t} = \sum_{j=i}^\infty {\psi_j \epsilon_{t+i-j}}</annotation></semantics></math></p>
+</div>
+<div class="section level4">
+<h4 id="dynamics-1">Dynamics<a class="anchor" aria-label="anchor" href="#dynamics-1"></a>
+</h4>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>T</mi><mi>t</mi></msub><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>⋯</mi></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>⋯</mi></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd><mtd columnalign="center" style="text-align: center"><mo>⋱</mo></mtd><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>⋯</mi></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mo>−</mo><msub><mi>φ</mi><mi>r</mi></msub></mtd><mtd columnalign="center" style="text-align: center"><mi>⋯</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>⋯</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>⋯</mi></mtd><mtd columnalign="center" style="text-align: center"><mo>−</mo><msub><mi>φ</mi><mn>1</mn></msub></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex"> T_t = \begin{pmatrix} 0 &amp;1 &amp; 0 &amp; \cdots &amp; 0  \\0&amp; 0 &amp; 1 &amp; \cdots &amp; 0\\ \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots\\ 0 &amp; 0 &amp; 0 &amp; \cdots &amp; 1\\
+-\varphi_r &amp; \cdots  &amp; \cdots &amp; \cdots &amp;-\varphi_1 \end{pmatrix}</annotation></semantics></math></p>
+<p style="text-align: center;">
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>φ</mi><mi>j</mi></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\varphi_{j}=0</annotation></semantics></math>
+for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>&gt;</mo><mi>p</mi></mrow><annotation encoding="application/x-tex">j&gt;p</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mi>t</mi></msub><mo>=</mo><msub><mi>σ</mi><mrow><mi>a</mi><mi>r</mi></mrow></msub><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>ψ</mi><mn>1</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>ψ</mi><mi>s</mi></msub></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex"> S_t = \sigma_{ar} \begin{pmatrix} 0 \\  
+\vdots \\
+0\\
+\hline
+1 \\ \psi_1 \\ \vdots\\ \psi_s \end{pmatrix} </annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mi>t</mi></msub><mo>=</mo><mi>S</mi><mi>S</mi><mi>′</mi></mrow><annotation encoding="application/x-tex"> V_t = S S' </annotation></semantics></math></p>
+</div>
+<div class="section level4">
+<h4 id="default-loading-1">Default loading<a class="anchor" aria-label="anchor" href="#default-loading-1"></a>
+</h4>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Z</mi><mi>t</mi></msub><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>⋯</mi></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mo stretchy="false" form="prefix">|</mo></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>⋯</mi></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex"> Z_t = \begin{pmatrix} 0 &amp; \cdots  &amp;0  &amp; | &amp; 1 &amp; 0 &amp; \cdots &amp; 0\end{pmatrix}</annotation></semantics></math></p>
+</div>
+<div class="section level4">
+<h4 id="initialization-1">Initialization<a class="anchor" aria-label="anchor" href="#initialization-1"></a>
+</h4>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>α</mi><mrow><mo>−</mo><mn>1</mn></mrow></msub><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex"> \alpha_{-1}  = \begin{pmatrix} 0 \\  
+\vdots \\
+0\\
+\hline
+0 \\ 0 \\ \vdots\\ 0 \end{pmatrix} </annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mo>*</mo></msub><mo>=</mo><mi>Ω</mi></mrow><annotation encoding="application/x-tex"> P_{*} = \Omega </annotation></semantics></math></p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Ω</mi><annotation encoding="application/x-tex">\Omega</annotation></semantics></math>
+is the unconditional covariance of the state array; it can be easily
+derived using the MA representation. We have:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Ω</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>i</mi><mo>,</mo><mn>0</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msub><mi>γ</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex"> \Omega\left(i,0\right) = \gamma_i </annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Ω</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>i</mi><mo>,</mo><mi>j</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>Ω</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo>,</mo><mi>j</mi><mo>−</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><msub><mi>ψ</mi><mi>i</mi></msub><msub><mi>ψ</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex"> \Omega\left(i,j\right) = \Omega\left(i-1,j-1\right)-\psi_i \psi_j </annotation></semantics></math></p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">b_ar2</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/ar.html">ar2</a></span><span class="op">(</span><span class="st">"ar2"</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">.2</span>, <span class="fl">.4</span>, <span class="op">-</span><span class="fl">.1</span><span class="op">)</span>, nlags<span class="op">=</span><span class="fl">3</span>, nfcasts<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span>
+<span><span class="fu">knit_print</span><span class="op">(</span><span class="fu"><a href="../reference/block_t.html">block_t</a></span><span class="op">(</span><span class="va">b_ar2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt;      [,1] [,2] [,3] [,4] [,5] [,6]</span></span>
+<span><span class="co">#&gt; [1,]    0    1    0  0.0  0.0  0.0</span></span>
+<span><span class="co">#&gt; [2,]    0    0    1  0.0  0.0  0.0</span></span>
+<span><span class="co">#&gt; [3,]    0    0    0  1.0  0.0  0.0</span></span>
+<span><span class="co">#&gt; [4,]    0    0    0  0.0  1.0  0.0</span></span>
+<span><span class="co">#&gt; [5,]    0    0    0  0.0  0.0  1.0</span></span>
+<span><span class="co">#&gt; [6,]    0    0    0 -0.1  0.4 -0.2</span></span></code></pre></div>
+</div>
+</div>
+<div class="section level3">
+<h3 id="arma">arma<a class="anchor" aria-label="anchor" href="#arma"></a>
+</h3>
+<div class="section level4">
+<h4 id="introduction-3">Introduction<a class="anchor" aria-label="anchor" href="#introduction-3"></a>
+</h4>
+<p>The arma block is defined by</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Φ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>B</mi><mo stretchy="true" form="postfix">)</mo></mrow><msub><mi>y</mi><mi>t</mi></msub><mo>=</mo><mi>Θ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>B</mi><mo stretchy="true" form="postfix">)</mo></mrow><msub><mi>ϵ</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">\Phi\left(B\right)y_t=\Theta\left(B\right)\epsilon_t </annotation></semantics></math></p>
+<p>where:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Φ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>B</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>1</mn><mo>+</mo><msub><mi>φ</mi><mn>1</mn></msub><mi>B</mi><mo>+</mo><mi>⋯</mi><mo>+</mo><msub><mi>φ</mi><mi>p</mi></msub><msup><mi>B</mi><mi>p</mi></msup></mrow><annotation encoding="application/x-tex">\Phi\left(B\right)=1+\varphi_1 B + \cdots + \varphi_p B^p </annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Θ</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>B</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>1</mn><mo>+</mo><msub><mi>θ</mi><mn>1</mn></msub><mi>B</mi><mo>+</mo><mi>⋯</mi><mo>+</mo><msub><mi>θ</mi><mi>q</mi></msub><msup><mi>B</mi><mi>q</mi></msup></mrow><annotation encoding="application/x-tex">\Theta\left(B\right)=1+\theta_1 B + \cdots + \theta_q B^q </annotation></semantics></math></p>
+<p>are the auto-regressive and the moving average polynomials.</p>
+<p>The MA representation of the process is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>y</mi><mi>t</mi></msub><mo>=</mo><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>0</mn></mrow><mi>∞</mi></msubsup><mrow><msub><mi>ψ</mi><mi>i</mi></msub><msub><mi>ϵ</mi><mrow><mi>t</mi><mo>−</mo><mi>i</mi></mrow></msub></mrow></mrow><annotation encoding="application/x-tex">y_t=\sum_{i=0}^\infty {\psi_i \epsilon_{t-i}}</annotation></semantics></math>.
+Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>γ</mi><mi>i</mi></msub><annotation encoding="application/x-tex">\gamma_i</annotation></semantics></math>
+be the autocovariances of the model. We also define:
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>=</mo><mo>max</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>p</mi><mo>,</mo><mi>q</mi><mo>+</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo><mspace width="1.0em"></mspace><mi>s</mi><mo>=</mo><mi>r</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">r=\max\left(p, q+1\right), \quad s=r-1</annotation></semantics></math>.</p>
+<p>Using those notations, the state-space block can be written as
+follows :</p>
+</div>
+<div class="section level4">
+<h4 id="state-block-2">State block:<a class="anchor" aria-label="anchor" href="#state-block-2"></a>
+</h4>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>α</mi><mi>t</mi></msub><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>y</mi><mi>t</mi></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>y</mi><mrow><mi>t</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="prefix">|</mo><mi>t</mi></mrow></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>y</mi><mrow><mi>t</mi><mo>+</mo><mi>s</mi><mo stretchy="false" form="prefix">|</mo><mi>t</mi></mrow></msub></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex"> \alpha_t= \begin{pmatrix} y_t \\ y_{t+1|t} \\ \vdots \\ y_{t+s|t} \end{pmatrix}</annotation></semantics></math></p>
+<p>where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>y</mi><mrow><mi>t</mi><mo>+</mo><mi>i</mi><mo stretchy="false" form="prefix">|</mo><mi>t</mi></mrow></msub><annotation encoding="application/x-tex">y_{t+i|t}</annotation></semantics></math>
+is the orthogonal projection of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>y</mi><mrow><mi>t</mi><mo>+</mo><mi>i</mi></mrow></msub><annotation encoding="application/x-tex">y_{t+i}</annotation></semantics></math>
+on the subspace generated by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>s</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>:</mo><mi>s</mi><mo>≤</mo><mi>t</mi></mrow><annotation encoding="application/x-tex">{y\left(s\right):s \leq t}</annotation></semantics></math>.Thus,
+it is the forecast function with respect to the semi-infinite sample. We
+also have that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>y</mi><mrow><mi>t</mi><mo>+</mo><mi>i</mi><mo stretchy="false" form="prefix">|</mo><mi>t</mi></mrow></msub><mo>=</mo><msubsup><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mi>i</mi></mrow><mi>∞</mi></msubsup><mrow><msub><mi>ψ</mi><mi>j</mi></msub><msub><mi>ϵ</mi><mrow><mi>t</mi><mo>+</mo><mi>i</mi><mo>−</mo><mi>j</mi></mrow></msub></mrow></mrow><annotation encoding="application/x-tex">y_{t+i|t} = \sum_{j=i}^\infty {\psi_j \epsilon_{t+i-j}}</annotation></semantics></math></p>
+</div>
+<div class="section level4">
+<h4 id="dynamics-2">Dynamics<a class="anchor" aria-label="anchor" href="#dynamics-2"></a>
+</h4>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>T</mi><mi>t</mi></msub><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>⋯</mi></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>⋯</mi></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd><mtd columnalign="center" style="text-align: center"><mo>⋱</mo></mtd><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>⋯</mi></mtd><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mo>−</mo><msub><mi>φ</mi><mi>r</mi></msub></mtd><mtd columnalign="center" style="text-align: center"><mi>⋯</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>⋯</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>⋯</mi></mtd><mtd columnalign="center" style="text-align: center"><mo>−</mo><msub><mi>φ</mi><mn>1</mn></msub></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex"> T_t = \begin{pmatrix}0 &amp;1 &amp; 0 &amp; \cdots &amp; 0  \\0&amp; 0 &amp; 1 &amp; \cdots &amp; 0\\ \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots\\ 0 &amp; 0 &amp; 0 &amp; \cdots &amp; 1\\
+-\varphi_r &amp; \cdots  &amp; \cdots &amp; \cdots &amp;-\varphi_1 \end{pmatrix}</annotation></semantics></math></p>
+<p style="text-align: center;">
+with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>φ</mi><mi>j</mi></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\varphi_{j}=0</annotation></semantics></math>
+for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>&gt;</mo><mi>p</mi></mrow><annotation encoding="application/x-tex">j&gt;p</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mi>t</mi></msub><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>ψ</mi><mn>1</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>ψ</mi><mi>s</mi></msub></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex"> S_t = \begin{pmatrix}1 \\ \psi_1 \\ \vdots\\ \psi_s \end{pmatrix} </annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>V</mi><mi>t</mi></msub><mo>=</mo><mi>S</mi><mi>S</mi><mi>′</mi></mrow><annotation encoding="application/x-tex"> V_t = S S' </annotation></semantics></math></p>
+</div>
+<div class="section level4">
+<h4 id="default-loading-2">Default loading<a class="anchor" aria-label="anchor" href="#default-loading-2"></a>
+</h4>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Z</mi><mi>t</mi></msub><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd><mtd columnalign="center" style="text-align: center"><mi>⋯</mi></mtd><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex"> Z_t = \begin{pmatrix} 1 &amp; 0 &amp; \cdots &amp; 0\end{pmatrix}</annotation></semantics></math></p>
+</div>
+<div class="section level4">
+<h4 id="initialization-2">Initialization<a class="anchor" aria-label="anchor" href="#initialization-2"></a>
+</h4>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>α</mi><mrow><mo>−</mo><mn>1</mn></mrow></msub><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>0</mn></mtd></mtr></mtable><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex"> \alpha_{-1} = \begin{pmatrix}0 \\ 0 \\ \vdots\\ 0 \end{pmatrix} </annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mo>*</mo></msub><mo>=</mo><mi>Ω</mi></mrow><annotation encoding="application/x-tex"> P_{*} = \Omega </annotation></semantics></math></p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Ω</mi><annotation encoding="application/x-tex">\Omega</annotation></semantics></math>
+is the unconditional covariance of the state array; it can be easily
+derived using the MA representation. We have:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Ω</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>i</mi><mo>,</mo><mn>0</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msub><mi>γ</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex"> \Omega\left(i,0\right) = \gamma_i </annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Ω</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>i</mi><mo>,</mo><mi>j</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mi>Ω</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo>,</mo><mi>j</mi><mo>−</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>−</mo><msub><mi>ψ</mi><mi>i</mi></msub><msub><mi>ψ</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex"> \Omega\left(i,j\right) = \Omega\left(i-1,j-1\right)-\psi_i \psi_j </annotation></semantics></math></p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">b_arma</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/arma.html">arma</a></span><span class="op">(</span><span class="st">"arma"</span>, ar<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">.2</span>, <span class="fl">.4</span>, <span class="op">-</span><span class="fl">.1</span><span class="op">)</span>, ma<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.3</span>, <span class="fl">.6</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu">knit_print</span><span class="op">(</span><span class="fu"><a href="../reference/block_t.html">block_t</a></span><span class="op">(</span><span class="va">b_arma</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt;      [,1] [,2] [,3]</span></span>
+<span><span class="co">#&gt; [1,]  0.0  1.0  0.0</span></span>
+<span><span class="co">#&gt; [2,]  0.0  0.0  1.0</span></span>
+<span><span class="co">#&gt; [3,]  0.1 -0.4  0.2</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">knit_print</span><span class="op">(</span><span class="fu"><a href="../reference/block_p0.html">block_p0</a></span><span class="op">(</span><span class="va">b_arma</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt;           [,1]      [,2]      [,3]</span></span>
+<span><span class="co">#&gt; [1,] 1.3501359 0.6394319 0.2517752</span></span>
+<span><span class="co">#&gt; [2,] 0.6394319 0.3501359 0.1394319</span></span>
+<span><span class="co">#&gt; [3,] 0.2517752 0.1394319 0.1001359</span></span></code></pre></div>
+</div>
+</div>
+<div class="section level3">
+<h3 id="arima">arima<a class="anchor" aria-label="anchor" href="#arima"></a>
+</h3>
 </div>
 </div>
 <div class="section level2">
@@ -207,7 +362,7 @@ We have:</p>
 </h3>
 </div>
 </div>
-  </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
+  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
 </div>
 
@@ -218,15 +373,15 @@ We have:</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
 </div>
 
     </footer>
 </div>
 
-  
 
-  
+
+
 
   </body>
 </html>

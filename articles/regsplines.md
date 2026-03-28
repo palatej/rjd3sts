@@ -41,7 +41,7 @@ sa2<-result(rslt, "ssf.smoothing.components")
 
 summary(sa1[,2]-sa2[,2])
 #>       Min.    1st Qu.     Median       Mean    3rd Qu.       Max. 
-#> -3.250e-07 -4.635e-08 -7.925e-10  2.063e-10  4.509e-08  2.421e-07
+#> -1.181e-07 -1.665e-08 -3.910e-11  8.890e-11  1.603e-08  8.794e-08
 ```
 
 ### BSM with partial periodic splines seasonal component

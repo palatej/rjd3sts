@@ -32,6 +32,8 @@
   Title
 - [`cycle()`](https://rjdverse.github.io/rjd3sts/reference/cycle.md) :
   Title
+- [`.akf_likelihood()`](https://rjdverse.github.io/rjd3sts/reference/dot-akf_likelihood.md)
+  : Title
 - [`.arima()`](https://rjdverse.github.io/rjd3sts/reference/dot-arima.md)
   : Title
 - [`.arima2()`](https://rjdverse.github.io/rjd3sts/reference/dot-arima2.md)
@@ -54,11 +56,17 @@
   : Title
 - [`.local_linear_trend()`](https://rjdverse.github.io/rjd3sts/reference/dot-local_linear_trend.md)
   : Title
+- [`.mssf()`](https://rjdverse.github.io/rjd3sts/reference/dot-mssf.md)
+  : Title
+- [`.mssf_measurements()`](https://rjdverse.github.io/rjd3sts/reference/dot-mssf_measurements.md)
+  : Title
 - [`.noise()`](https://rjdverse.github.io/rjd3sts/reference/dot-noise.md)
   : Title
 - [`.proc_diffuselikelihood()`](https://rjdverse.github.io/rjd3sts/reference/dot-proc_diffuselikelihood.md)
   : Title
 - [`.r2jd_bsm()`](https://rjdverse.github.io/rjd3sts/reference/dot-r2jd_bsm.md)
+  : Title
+- [`.sarima()`](https://rjdverse.github.io/rjd3sts/reference/dot-sarima.md)
   : Title
 - [`.seasonal()`](https://rjdverse.github.io/rjd3sts/reference/dot-seasonal.md)
   : Title
@@ -77,6 +85,8 @@
 - [`.ssf_Z()`](https://rjdverse.github.io/rjd3sts/reference/dot-ssf_Z.md)
   : Gets the loading vector. It should have the same length as the
   corresponding state block.
+- [`.ssf_as_time_invariant()`](https://rjdverse.github.io/rjd3sts/reference/dot-ssf_as_time_invariant.md)
+  : Title
 - [`.ssf_component()`](https://rjdverse.github.io/rjd3sts/reference/dot-ssf_component.md)
   : Title
 - [`.ssf_dim()`](https://rjdverse.github.io/rjd3sts/reference/dot-ssf_dim.md)

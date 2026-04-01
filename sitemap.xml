@@ -33,8 +33,10 @@
 <url><loc>https://rjdverse.github.io/rjd3sts/reference/dot-bsm2spec.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3sts/reference/dot-bsm2ucm.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3sts/reference/dot-circular_loading.html</loc></url>
+<url><loc>https://rjdverse.github.io/rjd3sts/reference/dot-ckms_likelihood.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3sts/reference/dot-composite.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3sts/reference/dot-cyclical_loading.html</loc></url>
+<url><loc>https://rjdverse.github.io/rjd3sts/reference/dot-dk_likelihood.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3sts/reference/dot-loading.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3sts/reference/dot-loading_composite.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3sts/reference/dot-local_level.html</loc></url>
@@ -45,6 +47,8 @@
 <url><loc>https://rjdverse.github.io/rjd3sts/reference/dot-proc_diffuselikelihood.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3sts/reference/dot-r2jd_bsm.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3sts/reference/dot-sarima.html</loc></url>
+<url><loc>https://rjdverse.github.io/rjd3sts/reference/dot-sarma.html</loc></url>
+<url><loc>https://rjdverse.github.io/rjd3sts/reference/dot-sarma2.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3sts/reference/dot-seasonal.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3sts/reference/dot-ssf.html</loc></url>
 <url><loc>https://rjdverse.github.io/rjd3sts/reference/dot-ssf_B.html</loc></url>

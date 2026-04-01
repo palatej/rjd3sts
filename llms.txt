@@ -129,9 +129,13 @@ Licence
   : Title
 - [`.circular_loading()`](https://rjdverse.github.io/rjd3sts/reference/dot-circular_loading.md)
   : Title
+- [`.ckms_likelihood()`](https://rjdverse.github.io/rjd3sts/reference/dot-ckms_likelihood.md)
+  : Title
 - [`.composite()`](https://rjdverse.github.io/rjd3sts/reference/dot-composite.md)
   : Title
 - [`.cyclical_loading()`](https://rjdverse.github.io/rjd3sts/reference/dot-cyclical_loading.md)
+  : Title
+- [`.dk_likelihood()`](https://rjdverse.github.io/rjd3sts/reference/dot-dk_likelihood.md)
   : Title
 - [`.loading()`](https://rjdverse.github.io/rjd3sts/reference/dot-loading.md)
   : Title
@@ -152,6 +156,10 @@ Licence
 - [`.r2jd_bsm()`](https://rjdverse.github.io/rjd3sts/reference/dot-r2jd_bsm.md)
   : Title
 - [`.sarima()`](https://rjdverse.github.io/rjd3sts/reference/dot-sarima.md)
+  : Title
+- [`.sarma()`](https://rjdverse.github.io/rjd3sts/reference/dot-sarma.md)
+  : Title
+- [`.sarma2()`](https://rjdverse.github.io/rjd3sts/reference/dot-sarma2.md)
   : Title
 - [`.seasonal()`](https://rjdverse.github.io/rjd3sts/reference/dot-seasonal.md)
   : Title

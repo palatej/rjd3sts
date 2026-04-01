@@ -35,9 +35,9 @@
 - [`.akf_likelihood()`](https://rjdverse.github.io/rjd3sts/reference/dot-akf_likelihood.md)
   : Title
 - [`.arima()`](https://rjdverse.github.io/rjd3sts/reference/dot-arima.md)
-  : Title
+  : Creates an ARIMA state block (representation I)
 - [`.arima2()`](https://rjdverse.github.io/rjd3sts/reference/dot-arima2.md)
-  : Title
+  : Creates an ARIMA state block (representation II)
 - [`.bsm2spec()`](https://rjdverse.github.io/rjd3sts/reference/dot-bsm2spec.md)
   : Title
 - [`.bsm2ucm()`](https://rjdverse.github.io/rjd3sts/reference/dot-bsm2ucm.md)
@@ -65,19 +65,21 @@
 - [`.mssf_measurements()`](https://rjdverse.github.io/rjd3sts/reference/dot-mssf_measurements.md)
   : Title
 - [`.noise()`](https://rjdverse.github.io/rjd3sts/reference/dot-noise.md)
-  : Title
+  : Creates a white noise
 - [`.proc_diffuselikelihood()`](https://rjdverse.github.io/rjd3sts/reference/dot-proc_diffuselikelihood.md)
   : Title
 - [`.r2jd_bsm()`](https://rjdverse.github.io/rjd3sts/reference/dot-r2jd_bsm.md)
   : Title
 - [`.sarima()`](https://rjdverse.github.io/rjd3sts/reference/dot-sarima.md)
-  : Title
+  : Creates an ARMA state block
 - [`.sarma()`](https://rjdverse.github.io/rjd3sts/reference/dot-sarma.md)
-  : Title
+  : Creates an ARMA state block (representation I)
 - [`.sarma2()`](https://rjdverse.github.io/rjd3sts/reference/dot-sarma2.md)
-  : Title
+  : Creates an ARMA state block (representation II)
 - [`.seasonal()`](https://rjdverse.github.io/rjd3sts/reference/dot-seasonal.md)
-  : Title
+  : Creates a seasonal component, corresponding to a multivariate random
+  walk, with an aggregation constraint to 0 and various covariances for
+  the innovations of the transition equation.
 - [`.ssf()`](https://rjdverse.github.io/rjd3sts/reference/dot-ssf.md) :
   Title
 - [`.ssf_B()`](https://rjdverse.github.io/rjd3sts/reference/dot-ssf_B.md)

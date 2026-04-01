@@ -1,6 +1,6 @@
-# Title
+# Creates a white noise
 
-Title
+Creates a white noise
 
 ## Usage
 
@@ -11,3 +11,18 @@ Title
 ## Arguments
 
 - var:
+
+  Variance of the noise
+
+## Value
+
+A raw java state block
+
+## Examples
+
+``` r
+sb<-.noise(.01)
+.ssf_T(sb, 0)
+#>      [,1]
+#> [1,]    0
+```

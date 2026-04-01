@@ -96,7 +96,8 @@
   : Gets the loading vector. It should have the same length as the
   corresponding state block.
 - [`.ssf_as_time_invariant()`](https://rjdverse.github.io/rjd3sts/reference/dot-ssf_as_time_invariant.md)
-  : Title
+  : Transforms a time invariant state space form based on functions into
+  a state space models represented by matrices.
 - [`.ssf_component()`](https://rjdverse.github.io/rjd3sts/reference/dot-ssf_component.md)
   : Title
 - [`.ssf_dim()`](https://rjdverse.github.io/rjd3sts/reference/dot-ssf_dim.md)

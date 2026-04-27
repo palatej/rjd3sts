@@ -28,6 +28,10 @@ the innovations of the transition equation.
 
   Variance of the innovations
 
+## Value
+
+A wrapper around the java object (class JD3_RawStateBlock)
+
 ## Examples
 
 ``` r

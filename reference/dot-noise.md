@@ -1,6 +1,6 @@
-# Creates a white noise
+# Creates a white noise.
 
-Creates a white noise
+Creates a white noise.
 
 ## Usage
 
@@ -12,11 +12,11 @@ Creates a white noise
 
 - var:
 
-  Variance of the noise
+  Variance of the noise.
 
 ## Value
 
-A raw java state block
+A wrapper around the java object (class JD3_RawStateBlock).
 
 ## Examples
 

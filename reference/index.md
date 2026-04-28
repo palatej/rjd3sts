@@ -5,7 +5,7 @@
 - [`add()`](https://rjdverse.github.io/rjd3sts/reference/add.md) : Adds
   a state block or a measurement equation to a given state space model
 - [`add_equation()`](https://rjdverse.github.io/rjd3sts/reference/add_equation.md)
-  : Add a building block to the considered equation
+  : Adds a building block to the considered equation.
 - [`aggregation()`](https://rjdverse.github.io/rjd3sts/reference/aggregation.md)
   : Title
 - [`ar()`](https://rjdverse.github.io/rjd3sts/reference/ar.md)
@@ -29,6 +29,8 @@
   : Title
 - [`components_pos()`](https://rjdverse.github.io/rjd3sts/reference/components_pos.md)
   : Position of the components
+- [`compute()`](https://rjdverse.github.io/rjd3sts/reference/compute.md)
+  : Computes a model, for given parameters
 - [`cumul()`](https://rjdverse.github.io/rjd3sts/reference/cumul.md) :
   Title
 - [`cycle()`](https://rjdverse.github.io/rjd3sts/reference/cycle.md) :
@@ -168,7 +170,8 @@
 - [`seasonalbreaks()`](https://rjdverse.github.io/rjd3sts/reference/seasonalbreaks.md)
   : Title
 - [`signal()`](https://rjdverse.github.io/rjd3sts/reference/signal.md) :
-  Title
+  Computes the signal, which is defined by the scalar product between
+  the rows of the smoothed states and of a given matrix.
 - [`smoothed_components()`](https://rjdverse.github.io/rjd3sts/reference/smoothed_components.md)
   : Retrieves the components of the model (univariate case) or the
   components corresponding to a given equation (multivariate case)

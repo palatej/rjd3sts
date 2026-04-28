@@ -33,6 +33,8 @@
   Title
 - [`cycle()`](https://rjdverse.github.io/rjd3sts/reference/cycle.md) :
   Title
+- [`.airline()`](https://rjdverse.github.io/rjd3sts/reference/dot-airline.md)
+  : Creates the state space form of an airline model;
 - [`.akf_likelihood()`](https://rjdverse.github.io/rjd3sts/reference/dot-akf_likelihood.md)
   : Computes the diffuse likelihood by means of the augmented Kalman
   filter.
@@ -92,19 +94,15 @@
 - [`.ssf_S()`](https://rjdverse.github.io/rjd3sts/reference/dot-ssf_S.md)
   : Title
 - [`.ssf_T()`](https://rjdverse.github.io/rjd3sts/reference/dot-ssf_T.md)
-  : Title
+  : Gets the transition matrix.
 - [`.ssf_V()`](https://rjdverse.github.io/rjd3sts/reference/dot-ssf_V.md)
-  : Title
+  : Gets the covariance of the innovations in the transition equation.
 - [`.ssf_Z()`](https://rjdverse.github.io/rjd3sts/reference/dot-ssf_Z.md)
   : Gets the loading vector. It should have the same length as the
   corresponding state block.
 - [`.ssf_as_time_invariant()`](https://rjdverse.github.io/rjd3sts/reference/dot-ssf_as_time_invariant.md)
   : Transforms a time invariant state space form based on functions into
   a state space models represented by matrices.
-- [`.ssf_component()`](https://rjdverse.github.io/rjd3sts/reference/dot-ssf_component.md)
-  : Title
-- [`.ssf_loading()`](https://rjdverse.github.io/rjd3sts/reference/dot-ssf_loading.md)
-  : Title
 - [`.ssf_smooth()`](https://rjdverse.github.io/rjd3sts/reference/dot-ssf_smooth.md)
   : Computes smoothed states by means of the augmented Kalman filter in
   the case of diffuse initialization
@@ -112,8 +110,8 @@
   : Title
 - [`.state_dim()`](https://rjdverse.github.io/rjd3sts/reference/dot-state_dim.md)
   : Retrieves the dimension of a state block
-- [`.state_initialization()`](https://rjdverse.github.io/rjd3sts/reference/dot-state_initialization.md)
-  : Title
+- [`.state_of()`](https://rjdverse.github.io/rjd3sts/reference/dot-state_of.md)
+  : Gets the state of the state space form
 - [`equation()`](https://rjdverse.github.io/rjd3sts/reference/equation.md)
   : Create equation
 - [`estimate()`](https://rjdverse.github.io/rjd3sts/reference/estimate.md)

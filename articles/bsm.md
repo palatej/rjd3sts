@@ -8,13 +8,22 @@ model. We present below some of them.
 To compare the results (more precisely the likelihood) of the different
 approaches, it is important to compute the marginal likelihood.
 
+    ## 
+    ## Attaching package: 'rjd3sts'
+
+    ## The following objects are masked from 'package:stats':
+    ## 
+    ##     ar, arima, cycle, loadings
+
 ``` r
+
 s<-log(Retail$BookStores)
 ```
 
 ### Standard definition, noise in the state
 
 ``` r
+
 # create the model
 bsm<-model()
 # create the components and add them to the model
@@ -30,6 +39,7 @@ rslt<-estimate(bsm, s, marginal=TRUE)
 ### Standard definition, noise in the measurement
 
 ``` r
+
 # create the model
 bsm<-model()
 # create the components and add them to the model
@@ -49,6 +59,7 @@ rslt<-estimate(bsm, s, marginal=TRUE)
 ### components with fixed variances, aggregated with diffuse weights (noise in the state)
 
 ``` r
+
 # create the model
 bsm<-model()
   # create the components, with fixed variances, and add them to the model
@@ -72,17 +83,14 @@ p<-result(rslt, "parameters")
 
 To be noted:
 
-- Level variance = $p\lbrack 5\rbrack \times p\lbrack 5\rbrack$ =
-  0.168622
-- Slope variance =
-  $p\lbrack 5\rbrack \times p\lbrack 5\rbrack \times p\lbrack 2\rbrack$
-  = 0.000382
-- Seas variance = $p\lbrack 6\rbrack \times p\lbrack 6\rbrack$ =
-  0.271323
+- Level variance = $`p[5]\times p[5]`$ = 0.168622
+- Slope variance = $`p[5]\times p[5] \times p[2]`$ = 0.000382
+- Seas variance = $`p[6]\times p[6]`$ = 0.271323
 
 ### bsm with long term trend and cycle
 
 ``` r
+
 # create the model
 bsm<-model()
   # create the components and add them to the model
@@ -99,6 +107,7 @@ rslt<-estimate(bsm, s, marginal=TRUE)
 - Parameters = 0.168604, 0.000000, 0.000382, 0.271294, 1.000000
 
 ``` r
+
 ss<-smoothed_states(rslt)
 plot(ss[,1]+ss[,2], type='l', col='blue', ylab='trends')
 lines(ss[, 2], col='red')

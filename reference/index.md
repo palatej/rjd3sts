@@ -126,6 +126,8 @@
   : Title
 - [`filtering_states_stdev()`](https://rjdverse.github.io/rjd3sts/reference/filtering_states_stdev.md)
   : Title
+- [`get_sts_option()`](https://rjdverse.github.io/rjd3sts/reference/get_sts_option.md)
+  : Set an option for sts
 - [`loading()`](https://rjdverse.github.io/rjd3sts/reference/loading.md)
   : Title
 - [`loading_cyclical()`](https://rjdverse.github.io/rjd3sts/reference/loading_cyclical.md)
@@ -193,6 +195,8 @@
 - [`sts()`](https://rjdverse.github.io/rjd3sts/reference/sts.md) : Title
 - [`sts_forecast()`](https://rjdverse.github.io/rjd3sts/reference/sts_forecast.md)
   : Forecast with STS model
+- [`sts_option()`](https://rjdverse.github.io/rjd3sts/reference/sts_option.md)
+  : Set an option for sts
 - [`sts_outliers()`](https://rjdverse.github.io/rjd3sts/reference/sts_outliers.md)
   : Title
 - [`sts_raw()`](https://rjdverse.github.io/rjd3sts/reference/sts_raw.md)
